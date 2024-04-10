@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Project 2</string>
     <string name="enter_a_generation_1_3">Enter a generation 1-3</string>
+    <string name="go">Go!</string>
+    <string name="enter_a_generation">Enter a generation</string>
+    <string name="generation_1">Generation 1</string>
+    <string name="pick_a_generation">Pick a generation!</string>
+    <string name="generation_2">Generation 2</string>
+    <string name="generation_3">Generation 3</string>
+    <string name="please_pick_a_generation">Please pick a generation</string>
 </resources>
