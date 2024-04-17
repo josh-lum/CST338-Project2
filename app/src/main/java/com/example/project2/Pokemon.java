@@ -59,7 +59,7 @@ public class Pokemon {
 
 
     public Pokemon attack(Pokemon mon){
-        int damage = this.getDmg()+moves.get("tackle");
+        int damage = this.getDmg();
         Double mod = mods.get(mon.getType());
         mon.setHp(mon.getHp()-(int)(damage*mod));
         if(mon.getHp()<=0){
