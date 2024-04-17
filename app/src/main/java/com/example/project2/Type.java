@@ -9,10 +9,11 @@ public class Type {
     private final Double NOTEFFECTIVE = .5;
     private final Double SUPEREFFECTIVE = 2.0;
 
-    private HashMap<String, Double> Firedata = new HashMap<>().put("Water", );
     private final int MULTIPLIER = 2;
 
+    public Type(String type){
 
+    }
     public int typeMult(Type type){
         if()
     }
