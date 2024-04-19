@@ -1,11 +1,14 @@
-package com.example.project2.Database.entities;
+package com.example.project2.Database;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.project2.Database.Mon;
+import com.example.project2.Database.entities.Mon;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Dao
 public interface MonDao {
@@ -13,5 +16,5 @@ public interface MonDao {
     void Insert(Mon mon);
 
     @Query("Select * from " + MonDatabase.monTable)
-    List<Mon> getAllRecords();
+    ArrayList<Mon> getAllRecords();
 }
