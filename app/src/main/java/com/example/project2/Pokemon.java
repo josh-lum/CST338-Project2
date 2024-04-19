@@ -13,7 +13,7 @@ public class Pokemon {
     private int hp;
     private int xp;
     private int level;
-    private int maxXp = 10+1*level;
+    private int maxXp = 10;
     private int dmg;
     private HashMap<String, Integer> moves;
     public final String WATER = "water";

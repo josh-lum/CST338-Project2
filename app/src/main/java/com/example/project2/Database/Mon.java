@@ -1,12 +1,14 @@
-package com.example.project2.Database.entities;
+package com.example.project2.Database;
 
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.project2.Database.entities.MonDatabase;
+
 import java.util.Objects;
 
-@Entity(tableName = "Pokemon")
+@Entity(tableName = MonDatabase.monTable)
 public class Mon {
     @PrimaryKey(autoGenerate = true)
     private Integer idNumber;
@@ -15,19 +17,22 @@ public class Mon {
     //keep moves for now, if we run out of time delete it
     private String moves;
     private int xp;
+    private int level;
     private int damage;
     private int attack;
 
-    public Mon(String name, String type, String moves, int xp, int damage, int attack) {
+    public Mon(String name, String type, String moves, int xp, int level, int damage, int attack) {
         this.name = name;
         this.type = type;
         this.moves = moves;
         this.xp = xp;
+        this.level = level;
         this.damage = damage;
         this.attack = attack;
     }
 
     // getters and setters for database
+
     public Integer getIdNumber() {
         return idNumber;
     }
@@ -50,6 +55,14 @@ public class Mon {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     public String getMoves() {
