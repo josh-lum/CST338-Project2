@@ -37,6 +37,12 @@ public class MonRepository {
 
         }
         return null;
-    };
+    }
+    public void insertMon(Mon mon){
+        MonDatabase.databaseWriteExecutor.execute(()->{
+            monDao.insert(mon);
+                });
+    }
+
 
 }

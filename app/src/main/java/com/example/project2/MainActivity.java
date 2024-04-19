@@ -10,10 +10,9 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
-import com.example.project2.Database.entities.MonDatabase;
 
 public class MainActivity extends AppCompatActivity {
-
+    private static final String TAG = "DAC_MON";
     //commented out but its from GymLog
 
 //    public MonRepository(Application application){
@@ -47,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         /* need to change more in future but:
 
            getGenerationNumber.setOnClickListener(new View.OnClickListener);
