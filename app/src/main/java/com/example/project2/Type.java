@@ -14,9 +14,9 @@ public class Type {
     public Type(String type){
 
     }
-    public int typeMult(Type type){
-        if()
-    }
+//    public int typeMult(Type type){
+//        if()
+//    }
 
 
 

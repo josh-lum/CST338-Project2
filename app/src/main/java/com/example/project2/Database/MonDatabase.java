@@ -18,7 +18,7 @@ import java.util.concurrent.Executors;
 @Database(entities = {Mon.class, User.class}, version = 2, exportSchema = false)
 public abstract class MonDatabase extends RoomDatabase {
     public static final String USER_TABLE = "user_table";
-    private static final String DATABASE_NAME = "Mon_Database";
+    public static final String DATABASE_NAME = "Mon_Database";
     public static final String MON_TABLE = "monTable";
 
     private static volatile MonDatabase INSTANCE;
@@ -45,7 +45,7 @@ public abstract class MonDatabase extends RoomDatabase {
             super.onCreate(db);
             Log.i(MainActivity.TAG, "Database Created!");
         }
-    }
+    };
 
     public abstract MonDao MonDAO();
 }

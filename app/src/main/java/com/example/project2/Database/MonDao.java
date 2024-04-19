@@ -13,8 +13,8 @@ import java.util.List;
 @Dao
 public interface MonDao {
     @Insert(onConflict =OnConflictStrategy.REPLACE)
-    void Insert(Mon mon);
+    void insert(Mon mon);
 
-    @Query("Select * from " + MonDatabase.monTable)
+    @Query("Select * from " + MonDatabase.MON_TABLE)
     ArrayList<Mon> getAllRecords();
 }

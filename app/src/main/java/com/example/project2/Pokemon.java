@@ -127,13 +127,5 @@ public class Pokemon {
         this.hp = hp;
     }
 
-    public List<Move> getMoves() {
-        return moves;
-    }
-
-    public void setMoves(ArrayList<Move> moves) {
-        this.moves = moves;
-    }
-
 }
 
