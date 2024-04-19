@@ -1,10 +1,10 @@
-package com.example.project2.Database;
+package com.example.project2.Database.entities;
 
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.example.project2.Database.entities.MonDatabase;
+import com.example.project2.Database.MonDatabase;
 
 import java.util.Objects;
 
