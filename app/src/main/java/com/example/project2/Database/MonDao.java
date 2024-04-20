@@ -16,9 +16,9 @@ public interface MonDao {
     @Insert(onConflict =OnConflictStrategy.REPLACE)
     void insert(Mon mon);
 
-    @Delete
-    void delete(Mon mon);
+//    @Delete
+//    void delete(Mon mon);
 
-    @Query("Select * from " + MonDatabase.MON_TABLE)
-    ArrayList<Mon> getAllRecords();
+    @Query("SELECT * FROM " + MonDatabase.MON_TABLE)
+    List<Mon> getAllRecords();
 }

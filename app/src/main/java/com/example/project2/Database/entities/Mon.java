@@ -8,7 +8,7 @@ import com.example.project2.Database.MonDatabase;
 
 import java.util.Objects;
 
-@Entity(tableName = MonDatabase.DATABASE_NAME)
+@Entity(tableName = MonDatabase.MON_TABLE)
 public class Mon {
     @PrimaryKey(autoGenerate = true)
     private Integer idNumber;

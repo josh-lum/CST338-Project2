@@ -33,7 +33,7 @@ public abstract class MonDatabase extends RoomDatabase {
                 if(INSTANCE==null){
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             MonDatabase.class,
-                            DATABASE_NAME).fallbackToDestructiveMigration().addCallback(addDefaultValues).build();
+                            MON_TABLE).fallbackToDestructiveMigration().addCallback(addDefaultValues).build();
 
                 }
             }
