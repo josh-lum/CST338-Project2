@@ -19,6 +19,6 @@ public interface UserDAO {
     void delete(User user);
 
     @Query("SELECT * FROM " + MonDatabase.USER_TABLE + " ORDER BY username")
-    ArrayList<User> getAllUsers();
+    ArrayList<User> getAllRecords();
 
 }
