@@ -21,14 +21,14 @@ public class MonRepository {
         MonDatabase db = MonDatabase.getDatabase(application);
         this.userDao = db.UserDAO();
         this.monDao = db.MonDAO();
-        this.allMon = this.monDao.getAllRecords();
+        this.allMon = (ArrayList<Mon>) this.monDao.getAllRecords();
     }
     public ArrayList<Mon> getAllMon(){
         Future<ArrayList<Mon>> future = MonDatabase.databaseWriteExecutor.submit(
                 new Callable<ArrayList<Mon>>() {
                     @Override
                     public ArrayList<Mon> call() throws Exception {
-                        return monDao.getAllRecords();
+                        return (ArrayList<Mon>) monDao.getAllRecords();
                     }
                 }
         );
