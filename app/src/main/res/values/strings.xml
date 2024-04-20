@@ -8,4 +8,9 @@
     <string name="generation_2">Generation 2</string>
     <string name="generation_3">Generation 3</string>
     <string name="please_pick_a_generation">Please pick a generation</string>
+    <string name="please_choose_a_pokemon">Please Choose a Pokemon</string>
+    <string name="Charmander" />
+    <string name="charmander">Charmander</string>
+    <string name="bulbasaur">Bulbasaur</string>
+    <string name="squirtle">Squirtle</string>
 </resources>

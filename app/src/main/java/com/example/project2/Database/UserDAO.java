@@ -13,7 +13,7 @@ import java.util.ArrayList;
 @Dao
 public interface UserDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(User user);
+    void insert(User... user);
 
     @Delete
     void delete(User user);
@@ -21,4 +21,6 @@ public interface UserDAO {
     @Query("SELECT * FROM " + MonDatabase.USER_TABLE + " ORDER BY username")
     ArrayList<User> getAllRecords();
 
+    @Query("DELETE from " + MonDatabase.USER_TABLE)
+    void deleteAll();
 }
