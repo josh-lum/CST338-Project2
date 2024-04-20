@@ -12,7 +12,7 @@ import android.os.Bundle;
 
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "DAC_MON";
+    public static final String TAG = "DAC_MON";
     //commented out but its from GymLog
 
 //    public MonRepository(Application application){

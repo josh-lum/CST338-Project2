@@ -7,6 +7,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.project2.Database.MonDatabase;
+
 import java.util.Objects;
 
 @Entity(tableName = MonDatabase.USER_TABLE)

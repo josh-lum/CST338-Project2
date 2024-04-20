@@ -1,6 +1,7 @@
 package com.example.project2.Database;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -14,6 +15,9 @@ import java.util.List;
 public interface MonDao {
     @Insert(onConflict =OnConflictStrategy.REPLACE)
     void insert(Mon mon);
+
+    @Delete
+    void delete(Mon mon);
 
     @Query("Select * from " + MonDatabase.MON_TABLE)
     ArrayList<Mon> getAllRecords();
