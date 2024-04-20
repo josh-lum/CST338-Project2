@@ -45,8 +45,19 @@ public abstract class MonDatabase extends RoomDatabase {
         public void onCreate(@NonNull SupportSQLiteDatabase db){
             super.onCreate(db);
             Log.i(MainActivity.TAG, "Database Created!");
+            databaseWriteExecutor.execute(()->{
+                UserDAO dao = INSTANCE.UserDAO();
+                dao.deleteAll();
+                User admin = new User("admin1","admin1");
+                admin.setAdmin(true);
+                dao.insert(admin);
+
+                User testUser1 = new User("testuser1","testuser1");
+                dao.insert(testUser1);
+            });
         }
     };
 
     public abstract MonDao MonDAO();
+    public abstract UserDAO UserDAO();
 }

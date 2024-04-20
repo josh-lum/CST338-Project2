@@ -4,6 +4,7 @@ import android.app.Application;
 import android.util.Log;
 
 import com.example.project2.Database.entities.Mon;
+import com.example.project2.Database.entities.User;
 import com.example.project2.MainActivity;
 
 import java.util.ArrayList;
@@ -13,10 +14,12 @@ import java.util.concurrent.Future;
 
 public class MonRepository {
     private MonDao monDao;
+    private UserDAO userDao;
     private ArrayList<Mon> allMon;
 
     public MonRepository(Application application){
         MonDatabase db = MonDatabase.getDatabase(application);
+        this.userDao = db.UserDAO();
         this.monDao = db.MonDAO();
         this.allMon = this.monDao.getAllRecords();
     }
@@ -42,6 +45,11 @@ public class MonRepository {
         MonDatabase.databaseWriteExecutor.execute(()->{
             monDao.insert(mon);
                 });
+    }
+    public void insertUser(User... user){
+        MonDatabase.databaseWriteExecutor.execute(()->{
+            userDao.insert(user);
+        });
     }
 
 
