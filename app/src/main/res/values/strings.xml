@@ -13,4 +13,7 @@
     <string name="charmander">Charmander</string>
     <string name="bulbasaur">Bulbasaur</string>
     <string name="squirtle">Squirtle</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="login">Login</string>
+    <string name="enter_username">Enter Username</string>
 </resources>
