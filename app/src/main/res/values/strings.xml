@@ -16,4 +16,8 @@
     <string name="enter_password">Enter Password</string>
     <string name="login">Login</string>
     <string name="enter_username">Enter Username</string>
+    <string name="welcome">welcome</string>
+    <string name="logout">logout</string>
+    <string name="to_be_filled_in_later">To Be filled in later</string>
+    <string name="adminstuff">adminstuff</string>
 </resources>
