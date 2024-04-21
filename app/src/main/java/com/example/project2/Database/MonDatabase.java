@@ -27,7 +27,7 @@ public abstract class MonDatabase extends RoomDatabase {
 
     static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    static MonDatabase getDatabase(final Context context){
+    public static MonDatabase getDatabase(final Context context){
         if(INSTANCE==null){
             synchronized (MonDatabase.class){
                 if(INSTANCE==null){
