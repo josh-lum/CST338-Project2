@@ -8,14 +8,21 @@ import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.project2.Database.MonRepository;
+import com.example.project2.databinding.ActivityMainBinding;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private ActivityMainBinding binding;
+    private static final String MAIN_ACTIVITY_USER_ID ="com.example.project2.MAIN_ACTIVITY_USER_ID";
     public static final String TAG = "DAC_MON";
     private MonRepository repository;
+    int loggedInUserId = -1;
 
     //commented out but its from GymLog
 
@@ -49,7 +56,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_screen);
+        binding = com.example.project2.databinding.ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        logInUser();
+//        if(loggedInUserId == -1){
+//            Intent intent = LandingPage.loginIntentFactory(getApplicationContext());
+//            startActivity(intent);
+//        }
+
 
         /* need to change more in future but:
 
@@ -57,6 +72,14 @@ public class MainActivity extends AppCompatActivity {
 
 
          */
+    }
+    private void logInUser(){
+        loggedInUserId = getIntent().getIntExtra(MAIN_ACTIVITY_USER_ID, -1);
+    }
+    static Intent MainActivityIntentFactory(Context context, int userId){
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra(MAIN_ACTIVITY_USER_ID, userId);
+        return intent;
     }
 
 }
