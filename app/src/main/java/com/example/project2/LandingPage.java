@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project2.Database.MonDatabase;
 import com.example.project2.Database.UserDAO;
+import com.example.project2.Database.entities.User;
 
 public class LandingPage extends AppCompatActivity {
 

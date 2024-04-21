@@ -23,10 +23,10 @@ public interface UserDAO {
     @Delete
     void delete(User user);
 
-    @Query("SELECT * FROM User WHERE username = :username")
+    @Query("SELECT * FROM "+MonDatabase.USER_TABLE +" WHERE username = :username")
     List<User> getUsername(String username);
 
-    @Query("SELECT * FROM User WHERE id = :id")
+    @Query("SELECT * FROM "+ MonDatabase.USER_TABLE+" WHERE id = :id")
     User getId(int id);
 
     @Query("SELECT * FROM " + MonDatabase.USER_TABLE + " ORDER BY username")
@@ -35,6 +35,6 @@ public interface UserDAO {
     @Query("DELETE from " + MonDatabase.USER_TABLE)
     void deleteAll();
 
-
-
+    @Query("SELECT * FROM "+MonDatabase.USER_TABLE +" WHERE username = :username")
+    User getUserByUsername(String username);
 }
