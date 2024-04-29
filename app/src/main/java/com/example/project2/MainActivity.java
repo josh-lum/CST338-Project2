@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private MonRepository repository;
     int loggedInUserId = -1;
 
+
     //commented out but its from GymLog
 
 //    public MonRepository(Application application){
@@ -59,11 +60,14 @@ public class MainActivity extends AppCompatActivity {
         binding = com.example.project2.databinding.ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        repository = MonRepository.getRepository(getApplication());
+        assert repository !=null;
+        repository.invokeDB();
         logInUser();
-//        if(loggedInUserId == -1){
-//            Intent intent = LandingPage.loginIntentFactory(getApplicationContext());
-//            startActivity(intent);
-//        }
+        if(loggedInUserId == -1){
+            Intent intent = LandingPage.loginIntentFactory(getApplicationContext());
+            startActivity(intent);
+        }
 
 
         /* need to change more in future but:
