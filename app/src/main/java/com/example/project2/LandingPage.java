@@ -33,17 +33,17 @@ public class LandingPage extends AppCompatActivity {
             }
         });
 
-        MonDatabase db = MonDatabase.getDatabase(this);
-        userDAO = db.UserDAO();
-
-        User user = userDAO.getUserByUsername("username");
-
-        if(user != null){
-            String username = user.getUsername();
-            boolean isAdmin = user.isAdmin();
-        }else{
-            // type something like user doesn't exist
-        }
+//        MonDatabase db = MonDatabase.getDatabase(this);
+//        userDAO = db.UserDAO();
+//
+//        User user = userDAO.getUserByUsername("username");
+//
+//        if(user != null){
+//            String username = user.getUsername();
+//            boolean isAdmin = user.isAdmin();
+//        }else{
+//            // type something like user doesn't exist
+//        }
     }
     static Intent loginIntentFactory(Context context){
         return new Intent(context, LandingPage.class);
