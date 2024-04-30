@@ -3,6 +3,8 @@ package com.example.project2.Database;
 import android.app.Application;
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
+
 import com.example.project2.Database.entities.Mon;
 import com.example.project2.Database.entities.User;
 import com.example.project2.MainActivity;
@@ -73,5 +75,11 @@ public class MonRepository {
         });
     }
 
+
+    public LiveData<User> getUserbyUserName(String username) {
+        return userDao.getUserByUsername(username);
+
+
+    }
 
 }
