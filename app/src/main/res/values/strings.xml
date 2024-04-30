@@ -20,4 +20,5 @@
     <string name="logout">logout</string>
     <string name="to_be_filled_in_later">To Be filled in later</string>
     <string name="adminstuff">adminstuff</string>
+    <string name="login_welcome">Welcome to Pokemon Leveler\nPlease sign in</string>
 </resources>
