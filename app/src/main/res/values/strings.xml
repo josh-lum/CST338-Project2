@@ -8,4 +8,17 @@
     <string name="generation_2">Generation 2</string>
     <string name="generation_3">Generation 3</string>
     <string name="please_pick_a_generation">Please pick a generation</string>
+    <string name="please_choose_a_pokemon">Please Choose a Pokemon</string>
+    <string name="Charmander" />
+    <string name="charmander">Charmander</string>
+    <string name="bulbasaur">Bulbasaur</string>
+    <string name="squirtle">Squirtle</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="login">Login</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="welcome">welcome</string>
+    <string name="logout">logout</string>
+    <string name="to_be_filled_in_later">To Be filled in later</string>
+    <string name="adminstuff">adminstuff</string>
+    <string name="login_welcome">Welcome to Pokemon Leveler\nPlease sign in</string>
 </resources>

@@ -4,30 +4,46 @@ package com.example.project2.Database.entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.project2.Database.MonDatabase;
+
 import java.util.Objects;
 
-@Entity(tableName = "Pokemon")
+@Entity(tableName = MonDatabase.MON_TABLE)
 public class Mon {
     @PrimaryKey(autoGenerate = true)
     private Integer idNumber;
+
+    private int userId;
     private String name;
     private String type;
     //keep moves for now, if we run out of time delete it
     private String moves;
     private int xp;
+    private int level;
     private int damage;
     private int attack;
 
-    public Mon(String name, String type, String moves, int xp, int damage, int attack) {
+    public Mon(int userId, String name, String type, String moves, int xp, int level, int damage, int attack) {
         this.name = name;
         this.type = type;
         this.moves = moves;
         this.xp = xp;
+        this.level = level;
         this.damage = damage;
         this.attack = attack;
+        this.userId = userId;
     }
 
     // getters and setters for database
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     public Integer getIdNumber() {
         return idNumber;
     }
@@ -50,6 +66,14 @@ public class Mon {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     public String getMoves() {
@@ -88,12 +112,13 @@ public class Mon {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Mon that = (Mon) o;
-        return xp == that.xp && damage == that.damage && attack == that.attack && Objects.equals(idNumber, that.idNumber) && Objects.equals(name, that.name) && Objects.equals(type, that.type) && Objects.equals(moves, that.moves);
+        Mon mon = (Mon) o;
+        return userId == mon.userId && xp == mon.xp && level == mon.level && damage == mon.damage && attack == mon.attack && Objects.equals(idNumber, mon.idNumber) && Objects.equals(name, mon.name) && Objects.equals(type, mon.type) && Objects.equals(moves, mon.moves);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idNumber, name, type, moves, xp, damage, attack);
+        return Objects.hash(idNumber, userId, name, type, moves, xp, level, damage, attack);
     }
+
 }
