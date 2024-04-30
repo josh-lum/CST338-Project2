@@ -1,22 +1,16 @@
 package com.example.project2;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.project2.Database.MonDatabase;
 import com.example.project2.Database.UserDAO;
-import com.example.project2.Database.entities.User;
 import com.example.project2.databinding.LoginScreenBinding;
 
-public class LandingPage extends AppCompatActivity {
+public class LoginPage extends AppCompatActivity {
     private LoginScreenBinding binding;
     private UserDAO userDAO;
 
@@ -25,6 +19,8 @@ public class LandingPage extends AppCompatActivity {
         super.onCreate(instance);
         binding = LoginScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        
         binding.enLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,7 +42,7 @@ public class LandingPage extends AppCompatActivity {
 //        }
     }
     static Intent loginIntentFactory(Context context){
-        return new Intent(context, LandingPage.class);
+        return new Intent(context, LoginPage.class);
 
     }
 }

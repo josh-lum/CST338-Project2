@@ -1,13 +1,7 @@
 package com.example.project2;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.DatabaseConfiguration;
-import androidx.room.InvalidationTracker;
-import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
-import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -65,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         repository.invokeDB();
         logInUser();
         if(loggedInUserId == -1){
-            Intent intent = LandingPage.loginIntentFactory(getApplicationContext());
+            Intent intent = LoginPage.loginIntentFactory(getApplicationContext());
             startActivity(intent);
         }
 
