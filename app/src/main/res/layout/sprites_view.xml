@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/bulbasaurImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bulbasaur"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/bulbasaurSprite" />
+
+    <ImageView
+        android:id="@+id/ivysaurImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ivysaur"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/ivysaurSprite" />
+
+    <ImageView
+        android:id="@+id/venasaurImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/venusaur"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/venasaurSprite" />
+
+
+    <ImageView
+        android:id="@+id/squirtleImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/squirtle"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/squirtleSprite" />
+
+    <ImageView
+        android:id="@+id/wartortleImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/wartortle"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/wartortleSprite" />
+
+    <ImageView
+        android:id="@+id/blastoiseImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/blastoise"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/blastoiseSprite" />
+
+    <ImageView
+        android:id="@+id/charmanderImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/charmander"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/charmanderSprite" />
+
+    <ImageView
+        android:id="@+id/charmeleonImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/charmeleon"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/charmeleonSprite" />
+
+    <ImageView
+        android:id="@+id/charizardImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/charizard"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/charizardSprite" />
+
+    <ImageView
+        android:id="@+id/chikoritaImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/chikorita"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/chikoritaSprite" />
+
+    <ImageView
+        android:id="@+id/bayleefImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bayleef"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/bayleefSprite" />
+
+    <ImageView
+        android:id="@+id/meganiumImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/meganium"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/meganiumSprite" />
+
+
+    <ImageView
+        android:id="@+id/cyndaquilImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cyndaquil"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/cyndaquilSprite" />
+
+
+    <ImageView
+        android:id="@+id/quilavaImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/quilava"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/quilavaSprite" />
+
+
+    <ImageView
+        android:id="@+id/typhlosionImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/typhlosion"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/typhlosionSprite" />
+
+
+    <ImageView
+        android:id="@+id/totodileImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/totodile"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/totodileSprite" />
+
+
+    <ImageView
+        android:id="@+id/croconawImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/croconaw"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/croconawSprite" />
+
+    <ImageView
+        android:id="@+id/feraligatrImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/feraligatr"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/feraligatrSprite" />
+
+    <ImageView
+        android:id="@+id/treeckoImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/treecko"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/treeckoSprite" />
+
+    <ImageView
+        android:id="@+id/grovyleImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/grovyle"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/grovyleSprite" />
+
+    <ImageView
+        android:id="@+id/sceptileImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sceptile"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/sceptileSprite" />
+
+    <ImageView
+        android:id="@+id/torchicImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/torchic"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/torchicSprite" />
+
+    <ImageView
+        android:id="@+id/combuskenImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/combusken"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/combuskenSprite" />
+
+    <ImageView
+        android:id="@+id/blazikenImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/blaziken"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/blazikenSprite" />
+
+    <ImageView
+        android:id="@+id/mudkipImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mudkip"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/mudkipSprite" />
+
+    <ImageView
+        android:id="@+id/marshtompImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/marshtomp"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/marshtompSprite" />
+
+    <ImageView
+        android:id="@+id/swampertImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/swampert"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/swampertSprite" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
