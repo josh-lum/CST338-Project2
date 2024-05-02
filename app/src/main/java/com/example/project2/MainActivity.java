@@ -9,6 +9,7 @@ import androidx.core.app.NotificationCompat;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,6 +24,8 @@ import com.example.project2.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int LOGGED_OUT = -1;
+    static final String SHARED_PREFERENCE_USERID_KEY="com.example.project2.SHARED_PREFERENCE_USERID_KEY";
     private ActivityMainBinding binding;
     private static final String MAIN_ACTIVITY_USER_ID ="com.example.project2.MAIN_ACTIVITY_USER_ID";
     public static final String TAG = "DAC_MON";
@@ -134,8 +137,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void logInUser(){
-        user = new User("username","password");
-        loggedInUserId = getIntent().getIntExtra(MAIN_ACTIVITY_USER_ID, -1);
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFERENCE_USERID_KEY,
+                Context.MODE_PRIVATE);
+
+        loggedInUserId = getIntent().getIntExtra(MAIN_ACTIVITY_USER_ID, LOGGED_OUT);
+        if(loggedInUserId==LOGGED_OUT){
+            return;
+        }
+
+
     }
 
     static Intent MainActivityIntentFactory(Context context, int userId){
