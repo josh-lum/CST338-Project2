@@ -38,10 +38,12 @@ public class CreateAccount extends AppCompatActivity {
                 String username = usernameEditText.getText().toString();
                 String password = passwordeditText.getText().toString();
 
+                // adding in a user
                 User user = new User(username, password);
                 userDAO.insert(user);
                 Toast.makeText(CreateAccount.this, "Account Created!", Toast.LENGTH_SHORT).show();
 
+                // brings you back to login page
                 Intent intent = new Intent(CreateAccount.this, LoginPage.class);
                 startActivity(intent);
                 finish();
