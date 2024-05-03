@@ -10,7 +10,7 @@ import androidx.room.Update;
 
 import com.example.project2.Database.entities.User;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 @Dao
@@ -24,14 +24,14 @@ public interface UserDAO {
     @Delete
     void delete(User user);
 
-    @Query("SELECT * FROM "+MonDatabase.USER_TABLE +" WHERE username = :username")
-    List<User> getUsername(String username);
-
-    @Query("SELECT * FROM "+ MonDatabase.USER_TABLE+" WHERE id = :id")
-    User getId(int id);
-
-    @Query("SELECT * FROM " + MonDatabase.USER_TABLE + " ORDER BY username")
+//    @Query("SELECT * FROM "+MonDatabase.USER_TABLE +" WHERE username = :username")
+//    List<User> getUsername(String username);
+    @Query("SELECT * FROM " + MonDatabase.USER_TABLE)
     LiveData<List<User>> getAllRecords();
+
+    @Query("SELECT * FROM "+ MonDatabase.USER_TABLE+" WHERE id == :id")
+    LiveData<User> getUserByUserId(int id);
+
 
     @Query("DELETE from " + MonDatabase.USER_TABLE)
     void deleteAll();

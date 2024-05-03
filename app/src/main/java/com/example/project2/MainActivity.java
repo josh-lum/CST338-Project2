@@ -67,10 +67,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = com.example.project2.databinding.ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+//        repository.invokeDB();
         repository = MonRepository.getRepository(getApplication());
-        assert repository !=null;
-        repository.invokeDB();
+//        assert repository !=null;
+
         logInUser(savedInstanceState);
 ///        invalidateOptionsMenu();
         if(loggedInUserId == -1){
@@ -118,34 +118,34 @@ public class MainActivity extends AppCompatActivity {
 //        });
 //        return true;
 //    }
-    private void showLogoutDialog(){
-        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainActivity.this);
-        final AlertDialog alertDialog = alertBuilder.create();
-
-        alertBuilder.setMessage("Logout?");
-
-        alertBuilder.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                logout();
-            }
-        });
-        alertBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                alertDialog.dismiss();
-            }
-        });
-        alertBuilder.create().show();
-    }
+//    private void showLogoutDialog(){
+//        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainActivity.this);
+//        final AlertDialog alertDialog = alertBuilder.create();
+//
+//        alertBuilder.setMessage("Logout?");
+//
+//        alertBuilder.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                logout();
+//            }
+//        });
+//        alertBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                alertDialog.dismiss();
+//            }
+//        });
+//        alertBuilder.create().show();
+//    }
 
 
     private void logout() {
-//        SharedPreferences sharedPreferences = getApplication().getSharedPreferences(SHARED_PREFERENCE_USERID_KEY,Context.MODE_PRIVATE);
-//        SharedPreferences.Editor sharedPrefEditor = sharedPreferences.edit();
-//        sharedPrefEditor.putInt(SHARED_PREFERENCE_USERID_KEY,LOGGED_OUT);
+        SharedPreferences sharedPreferences = getApplication().getSharedPreferences(SHARED_PREFERENCE_USERID_KEY,Context.MODE_PRIVATE);
+        SharedPreferences.Editor sharedPrefEditor = sharedPreferences.edit();
+        sharedPrefEditor.putInt(SHARED_PREFERENCE_USERID_KEY,LOGGED_OUT);
         startActivity(LoginPage.loginIntentFactory(getApplicationContext()));
-//        sharedPrefEditor.apply();
+        sharedPrefEditor.apply();
 
 //        Intent intent =
     }
@@ -153,13 +153,14 @@ public class MainActivity extends AppCompatActivity {
     private void logInUser(Bundle savedInstanceState){
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFERENCE_USERID_KEY,
                 Context.MODE_PRIVATE);
-//        if(sharedPreferences.contains(SHARED_PREFERENCE_USERID_KEY)){
-//            loggedInUserId = sharedPreferences.getInt(SHARED_PREFERENCE_USERID_KEY, LOGGED_OUT);
-//        }
-        loggedInUserId = getIntent().getIntExtra(MAIN_ACTIVITY_USER_ID, LOGGED_OUT);
+        if(sharedPreferences.contains(SHARED_PREFERENCE_USERID_KEY)){
+            loggedInUserId = sharedPreferences.getInt(SHARED_PREFERENCE_USERID_KEY, LOGGED_OUT);
+        }
+        loggedInUserId = getIntent().getIntExtra(SHARED_PREFERENCE_USERID_VALUE, LOGGED_OUT);
         if(loggedInUserId==LOGGED_OUT){
             return;
         }
+
 
 
 

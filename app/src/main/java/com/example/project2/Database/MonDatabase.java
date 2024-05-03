@@ -18,7 +18,7 @@ import java.util.concurrent.Executors;
 
 @Database(entities = {Mon.class, User.class}, version = 2, exportSchema = false)
 public abstract class MonDatabase extends RoomDatabase {
-    public static final String USER_TABLE = "usertable";
+    public static final String USER_TABLE = "user_table";
     public static final String DATABASE_NAME = "Mon_Database";
     public static final String MON_TABLE = "monTable";
 
@@ -33,7 +33,7 @@ public abstract class MonDatabase extends RoomDatabase {
                 if(INSTANCE==null){
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             MonDatabase.class,
-                            MON_TABLE).fallbackToDestructiveMigration().addCallback(addDefaultValues).build();
+                            DATABASE_NAME).fallbackToDestructiveMigration().addCallback(addDefaultValues).build();
 
                 }
             }
