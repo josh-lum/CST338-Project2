@@ -40,6 +40,8 @@ public abstract class MonDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
+
+
     private final static RoomDatabase.Callback addDefaultValues = new RoomDatabase.Callback(){
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db){

@@ -48,15 +48,29 @@
 
     <Button
         android:id="@+id/en_login"
+        android:layout_width="130dp"
+        android:layout_height="52dp"
         android:layout_margin="4dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"
         android:gravity="center"
+        android:text="@string/login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/en_pass"
-        
-        android:text="@string/login" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/en_pass" />
+
+    <Button
+        android:id="@+id/create_account"
+        android:layout_width="130dp"
+        android:layout_height="52dp"
+        android:layout_margin="4dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/create_account"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/en_login" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

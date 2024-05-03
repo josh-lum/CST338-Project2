@@ -2,6 +2,11 @@ package com.example.project2;
 
 import java.util.HashMap;
 //Not sure if type is an object or not yet, hashmap will contain matchups.
+
+
+// POSSIBLY DEPRECATED
+
+
 public class Type {
     private final String WATER = "water";
     private final String FIRE = "fire";

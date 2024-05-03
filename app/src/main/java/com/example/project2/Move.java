@@ -1,5 +1,9 @@
 package com.example.project2;
 
+
+// DEPRECATED
+
+
 public class Move {
     String name;
     Type type;
