@@ -5,12 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.project2.Database.entities.Mon;
 import com.example.project2.Database.entities.User;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class BattleLooper extends AppCompatActivity {
 
+    private static final int DAMAGE_TICK = 2;
+    private static final int DAMAGE_INTERVAL = 1000;
+    private int damageInterval = DAMAGE_INTERVAL;
     private Handler handler;
     private Mon mon;
     private Opponent opponent;
@@ -21,6 +28,21 @@ public class BattleLooper extends AppCompatActivity {
         super.onCreate(savedInstance);
         setContentView(R.layout.battle_screen);
         handler = new Handler(Looper.getMainLooper());
+        Button backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPress();
+            }
+        });
+
+        Button inflictDamageButton = findViewById(R.id.inflictDamageButton);
+        inflictDamageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inflictDamage();
+            }
+        });
         startGameLoop();
     }
 
@@ -34,9 +56,29 @@ public class BattleLooper extends AppCompatActivity {
                        opponent.switchToNextPokemon();
                    }
                    updateOpponentPokemonHealth();
-                   handler.postDelayed(this,)
+                   handler.postDelayed(this, damageInterval);
+               }else{
+                   TextView victoryTextView = findViewById(R.id.victoryScreenTextView);
+                   victoryTextView.setText("Congratulations you defeated all the opponents pokemon!");
+                   victoryTextView.setVisibility(View.VISIBLE);
                }
             }
-        })
+        }, damageInterval);
+    }
+    private void updateOpponentPokemonHealth(){
+        opponent.getNextPokemon().getHp();
+    }
+
+    private void inflictDamage(){
+        if(opponent.hasMorePokemon()){
+            Pokemon currentMon = opponent.getNextPokemon();
+            currentMon.setDmg(DAMAGE_TICK);
+            updateOpponentPokemonHealth();
+        }
+    }
+    public void onBackPress(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

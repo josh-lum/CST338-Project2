@@ -50,4 +50,5 @@
     <string name="mudkipSprite">mudkipSprite</string>
     <string name="marshtompSprite">marshtompSprite</string>
     <string name="swampertSprite">swampertSprite</string>
+    <string name="congratulations_you_defeated_all_the_opponents_pokemon">Congratulations you defeated all the opponents pokemon!</string>
 </resources>

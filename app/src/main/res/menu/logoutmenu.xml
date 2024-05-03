@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/LogOutMenuItem"
-        android:title="@string/logged_in"
+        android:title="logged_in"
         app:showAsAction="ifRoom"
         />
 </menu>
