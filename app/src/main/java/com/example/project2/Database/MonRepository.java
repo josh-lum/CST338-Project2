@@ -76,9 +76,9 @@ public class MonRepository {
     }
 
 
-    public LiveData<User> getUserbyUserName(String username) {
-        return userDao.getUserByUsername(username);
+    public LiveData<User> getUserByUserName(String username) {
 
+        return userDao.getUserByUsername(username);
 
     }
 

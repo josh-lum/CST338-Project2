@@ -33,6 +33,7 @@ public class LandingPage extends AppCompatActivity {
             }
         });
 
+
 //        MonDatabase db = MonDatabase.getDatabase(this);
 //        userDAO = db.UserDAO();
 //
@@ -45,8 +46,9 @@ public class LandingPage extends AppCompatActivity {
 //            // type something like user doesn't exist
 //        }
     }
-    static Intent loginIntentFactory(Context context){
-        return new Intent(context, LandingPage.class);
-
+    static Intent LandingPageIntentFactory(Context context, int userId){
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra(MainActivity.SHARED_PREFERENCE_USERID_VALUE, userId);
+        return intent;
     }
 }

@@ -54,7 +54,7 @@ public class LoginPage extends AppCompatActivity {
             toastMaker("Username may not be blank");
             return;
         }
-        LiveData<User> userObserver = repository.getUserbyUserName(username);
+        LiveData<User> userObserver = repository.getUserByUserName(username);
         userObserver.observe(this, user -> {
             if(user !=null){
                 String password = binding.enPass.getText().toString();

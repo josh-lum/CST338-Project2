@@ -86,4 +86,5 @@ public class BattleLooper extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
 }
