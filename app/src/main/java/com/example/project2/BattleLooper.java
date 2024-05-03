@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.project2.Database.entities.Mon;
 import com.example.project2.Database.entities.User;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,6 +29,8 @@ public class BattleLooper extends AppCompatActivity {
         super.onCreate(savedInstance);
         setContentView(R.layout.battle_screen);
         handler = new Handler(Looper.getMainLooper());
+
+        // go back to menu screen
         Button backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +39,7 @@ public class BattleLooper extends AppCompatActivity {
             }
         });
 
+        // deal damage button (its invisible)
         Button inflictDamageButton = findViewById(R.id.inflictDamageButton);
         inflictDamageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +52,7 @@ public class BattleLooper extends AppCompatActivity {
 
     private void startGameLoop(){
         handler.postDelayed(new Runnable() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void run() {
                if(opponent.hasMorePokemon()){
