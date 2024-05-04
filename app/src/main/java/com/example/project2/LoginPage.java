@@ -88,21 +88,6 @@ public class LoginPage extends AppCompatActivity {
                 }
             });
 
-//        userObserver.observe(this, user -> {
-//            if(user !=null){
-//                String password = binding.enPass.getText().toString();
-//                if(password.equals(user.getPassword())){
-//                    startActivity(MainActivity.MainActivityIntentFactory(getApplicationContext(),user.getId()));
-//                }else{
-//                    toastMaker("Invalid Password");
-//                    binding.enPass.setSelection(0);
-//                }
-//            }else{
-//                toastMaker(username+" is not a valid username");
-//                binding.enUser.setSelection(0);
-//
-//            }
-//        });
 
     }
 

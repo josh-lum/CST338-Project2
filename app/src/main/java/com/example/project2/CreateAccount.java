@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+
 import com.example.project2.Database.MonDatabase;
 import com.example.project2.Database.MonRepository;
 import com.example.project2.Database.UserDAO;
@@ -36,31 +39,84 @@ public class CreateAccount extends AppCompatActivity {
 
         userDAO = MonDatabase.getDatabase(this).UserDAO();
 
-        usernameEditText = findViewById(R.id.create_user);
-        passwordeditText = findViewById(R.id.create_password);
-        createAccountButton = findViewById(R.id.create_account_createAccountScreen);
+//        usernameEditText = findViewById(R.id.create_user);
+//        passwordeditText = findViewById(R.id.create_password);
+//        createAccountButton = findViewById(R.id.create_account_createAccountScreen);
+//        String username = binding.createUser.getText().toString();
 
 
-        createAccountButton.setOnClickListener(new View.OnClickListener() {
+//        if(username.isEmpty()){
+//            toastMaker("Username may not be blank");
+//            return;
+//        }
+
+        binding.createAccountScreen.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
-                String username = usernameEditText.getText().toString();
-                String password = passwordeditText.getText().toString();
+                createAccount();
+//                String username = usernameEditText.getText().toString();
+//                String password = passwordeditText.getText().toString();
+//
+//                // adding in a user
+//                User user = new User(username, password);
+//                userDAO.insert(user);
+//                Toast.makeText(CreateAccount.this, "Account Created!", Toast.LENGTH_SHORT).show();
+//
+//                // brings you back to login page
+//                Intent intent = new Intent(CreateAccount.this, LoginPage.class);
+//                startActivity(intent);
+//                finish();
 
-                // adding in a user
-                User user = new User(username, password);
-                userDAO.insert(user);
-                Toast.makeText(CreateAccount.this, "Account Created!", Toast.LENGTH_SHORT).show();
-
-                // brings you back to login page
-                Intent intent = new Intent(CreateAccount.this, LoginPage.class);
-                startActivity(intent);
-                finish();
             }
         });
     }
+    private void createAccount() {
+        String username = binding.createUser.getText().toString();
+        // Perform input validation
+        if(username.isEmpty()){
+            toastMaker("Username may not be blank");
+            return;
+        }
+
+        // Check if the username already exists
+        LiveData<User> existingUser = repository.getUserByUserName(username);
+        existingUser.observe(this, new Observer<User>() {
+            @Override
+            public void onChanged(User user) {
+                existingUser.removeObserver(this);
+                if (user != null) {
+                    toastMaker("Username already exists");
+                } else {
+                    String password = binding.createPassword.getText().toString();
+                    if(password.isEmpty()){
+                        toastMaker("Empty Password");
+                        return;
+                    }
+                    User newUser = new User(username, password);
+                    repository.insertUser(newUser);
+                    toastMaker("Account created successfully");
+                    // Navigate back to the login screen
+                    startActivity(MainActivity.MainActivityIntentFactory(getApplicationContext(),newUser.getId()));
+//                    finish();
+                }
+            }
+        });
+    }
+//    private void verifyUser(){
+//        String username = binding.createUser.getText().toString();
+//
+//        if(username.isEmpty()){
+//            toastMaker("Username may not be blank");
+//            return;
+//        }
+//
+//
+//
+//    }
     static Intent CreateAccountIntentFactory(Context context){
         return new Intent(context, CreateAccount.class);
 
     }
-
+    private void toastMaker(String s) {
+        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
+    }
 }
