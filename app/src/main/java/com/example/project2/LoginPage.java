@@ -22,7 +22,7 @@ public class LoginPage extends AppCompatActivity {
     private MonRepository repository;
 //    private LiveData<User> userObserver;
 
-    private Button createAccountButton;
+//    private Button createAccountButton;
 
     @Override
     protected void onCreate(Bundle instance){
@@ -34,13 +34,12 @@ public class LoginPage extends AppCompatActivity {
 
 
         // for going to create account
-        createAccountButton = findViewById(R.id.create_account);
-        createAccountButton.setOnClickListener(new View.OnClickListener() {
+//        createAccountButton = findViewById(R.id.create_account);
+        binding.createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginPage.this, CreateAccount.class);
-                startActivity(intent);
-                finish();
+                startActivity(CreateAccount.CreateAccountIntentFactory(getApplicationContext()));
+
             }
         });
 
@@ -50,6 +49,7 @@ public class LoginPage extends AppCompatActivity {
                 verifyUser();
             }
         });
+
 
 //        MonDatabase db = MonDatabase.getDatabase(this);
 //        userDAO = db.UserDAO();

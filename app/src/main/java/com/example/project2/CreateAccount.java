@@ -2,6 +2,7 @@ package com.example.project2;
 
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,8 +12,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.project2.Database.MonDatabase;
+import com.example.project2.Database.MonRepository;
 import com.example.project2.Database.UserDAO;
+import com.example.project2.Database.entities.Mon;
 import com.example.project2.Database.entities.User;
+import com.example.project2.databinding.CreateAccountBinding;
 
 public class CreateAccount extends AppCompatActivity {
 
@@ -20,11 +24,15 @@ public class CreateAccount extends AppCompatActivity {
     private EditText passwordeditText;
     private Button createAccountButton;
     private UserDAO userDAO;
+    private CreateAccountBinding binding;
+    private MonRepository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_account);
+        binding = com.example.project2.databinding.CreateAccountBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        repository = MonRepository.getRepository(getApplication());
 
         userDAO = MonDatabase.getDatabase(this).UserDAO();
 
@@ -49,6 +57,10 @@ public class CreateAccount extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    static Intent CreateAccountIntentFactory(Context context){
+        return new Intent(context, CreateAccount.class);
+
     }
 
 }

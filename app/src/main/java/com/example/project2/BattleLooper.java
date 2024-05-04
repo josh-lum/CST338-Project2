@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project2.Database.entities.Mon;
 import com.example.project2.Database.entities.User;
+import com.example.project2.databinding.BattleScreenBinding;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -23,11 +24,14 @@ public class BattleLooper extends AppCompatActivity {
     private Mon mon;
     private Opponent opponent;
     private User user;
+    private BattleScreenBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
-        setContentView(R.layout.battle_screen);
+        binding = com.example.project2.databinding.BattleScreenBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         handler = new Handler(Looper.getMainLooper());
 
         // go back to menu screen
