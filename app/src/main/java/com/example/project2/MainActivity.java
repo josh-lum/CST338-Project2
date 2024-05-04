@@ -84,8 +84,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-
-
+        binding.LogOutMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
         binding.BattleMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

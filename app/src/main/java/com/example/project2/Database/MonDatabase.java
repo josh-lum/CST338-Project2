@@ -33,7 +33,7 @@ public abstract class MonDatabase extends RoomDatabase {
                 if(INSTANCE==null){
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             MonDatabase.class,
-                            DATABASE_NAME).fallbackToDestructiveMigration().addCallback(addDefaultValues).build();
+                            USER_TABLE).fallbackToDestructiveMigration().addCallback(addDefaultValues).build();
 
                 }
             }
@@ -47,10 +47,10 @@ public abstract class MonDatabase extends RoomDatabase {
         public void onCreate(@NonNull SupportSQLiteDatabase db){
             super.onCreate(db);
             Log.i(MainActivity.TAG, "Database Created!");
-            MonDatabase database = INSTANCE;
-            UserDAO dao = database.UserDAO();
-            databaseWriteExecutor.execute(()->{
 
+            databaseWriteExecutor.execute(()->{
+                MonDatabase database = INSTANCE;
+                UserDAO dao = database.UserDAO();
                 dao.deleteAll();
                 User admin = new User("admin1","admin1");
                 admin.setAdmin(true);
