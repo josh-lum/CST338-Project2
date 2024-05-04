@@ -223,9 +223,11 @@
         android:id="@+id/swampertImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/swampertSprite"
         android:src="@drawable/swampert"
         tools:ignore="MissingConstraints"
-        android:contentDescription="@string/swampertSprite" />
+        tools:layout_editor_absoluteX="-7dp"
+        tools:layout_editor_absoluteY="-7dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
