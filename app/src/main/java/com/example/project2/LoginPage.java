@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,8 @@ public class LoginPage extends AppCompatActivity {
     private MonRepository repository;
 //    private LiveData<User> userObserver;
 
+    private Button createAccountButton;
+
     @Override
     protected void onCreate(Bundle instance){
         super.onCreate(instance);
@@ -28,7 +31,19 @@ public class LoginPage extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         repository = MonRepository.getRepository(getApplication());
-        
+
+
+        // for going to create account
+        createAccountButton = findViewById(R.id.create_account);
+        createAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginPage.this, CreateAccount.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         binding.enLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

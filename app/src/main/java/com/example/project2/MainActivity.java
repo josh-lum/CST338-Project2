@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.project2.Database.MonRepository;
 import com.example.project2.Database.entities.User;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private MonRepository repository;
     private int loggedInUserId = -1;
     private User user;
+
 
 
     //commented out but its from GymLog
@@ -80,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = LoginPage.loginIntentFactory(getApplicationContext());
             startActivity(intent);
         }
+
+
+
+
         binding.BattleMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
