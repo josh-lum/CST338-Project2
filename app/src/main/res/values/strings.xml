@@ -58,4 +58,10 @@
     <string name="create_account">Create Account</string>
     <string name="pick_a__generation">pick a generation</string>
     <string name="Generation_2">Generation 2</string>
+    <string name="chikorita">chikorita</string>
+    <string name="cyndaquil">cyndaquil</string>
+    <string name="totodile">totodile</string>
+    <string name="torchic">torchic</string>
+    <string name="treecko">treecko</string>
+    <string name="mudkip">mudkip</string>
 </resources>
