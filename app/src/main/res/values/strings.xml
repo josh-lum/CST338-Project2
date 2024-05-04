@@ -56,4 +56,6 @@
     <string name="log_out">Log out</string>
     <string name="battle">Battle</string>
     <string name="create_account">Create Account</string>
+    <string name="pick_a__generation">pick a generation</string>
+    <string name="Generation_2">Generation 2</string>
 </resources>
