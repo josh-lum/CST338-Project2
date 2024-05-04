@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
     static final String SHARED_PREFERENCE_USERID_VALUE = "com.example.project2.SHARED_PREFERENCE_USERID_VALUE";
     private ActivityMainBinding binding;
     private static final String MAIN_ACTIVITY_USER_ID ="com.example.project2.MAIN_ACTIVITY_USER_ID";
+    private static final String SAVED_INSTANCE_STATE_USERID_KEY ="com.example.project2.SAVED_INSTANCE_STATE_USERID_KEY";
+    private static final String SAVED_INSTANCE_STATE_USERID_VALUE ="com.example.project2.SAVED_INSTANCE_STATE_USERID_VALUE";
+
     public static final String TAG = "DAC_MON";
     private MonRepository repository;
     private int loggedInUserId = -1;
@@ -154,9 +157,14 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFERENCE_USERID_KEY,
                 Context.MODE_PRIVATE);
         if(sharedPreferences.contains(SHARED_PREFERENCE_USERID_KEY)){
-            loggedInUserId = sharedPreferences.getInt(SHARED_PREFERENCE_USERID_KEY, LOGGED_OUT);
+            loggedInUserId = sharedPreferences.getInt(SHARED_PREFERENCE_USERID_VALUE, LOGGED_OUT);
         }
-        loggedInUserId = getIntent().getIntExtra(SHARED_PREFERENCE_USERID_VALUE, LOGGED_OUT);
+        if(loggedInUserId==LOGGED_OUT & savedInstanceState!=null&&savedInstanceState.containsKey(SAVED_INSTANCE_STATE_USERID_KEY)){
+            loggedInUserId = savedInstanceState.getInt(SAVED_INSTANCE_STATE_USERID_KEY,LOGGED_OUT);
+        }
+        if(loggedInUserId==LOGGED_OUT) {
+            loggedInUserId = getIntent().getIntExtra(MAIN_ACTIVITY_USER_ID, LOGGED_OUT);
+        }
         if(loggedInUserId==LOGGED_OUT){
             return;
         }

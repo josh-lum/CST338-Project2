@@ -16,7 +16,7 @@ import com.example.project2.MainActivity;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Mon.class, User.class}, version = 2, exportSchema = false)
+@Database(entities = {Mon.class, User.class}, version = 3, exportSchema = false)
 public abstract class MonDatabase extends RoomDatabase {
     public static final String USER_TABLE = "user_table";
     public static final String DATABASE_NAME = "Mon_Database";
@@ -33,7 +33,7 @@ public abstract class MonDatabase extends RoomDatabase {
                 if(INSTANCE==null){
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             MonDatabase.class,
-                            DATABASE_NAME).fallbackToDestructiveMigration().addCallback(addDefaultValues).build();
+                            USER_TABLE).fallbackToDestructiveMigration().addCallback(addDefaultValues).build();
 
                 }
             }
@@ -45,8 +45,10 @@ public abstract class MonDatabase extends RoomDatabase {
         public void onCreate(@NonNull SupportSQLiteDatabase db){
             super.onCreate(db);
             Log.i(MainActivity.TAG, "Database Created!");
+            MonDatabase database = INSTANCE;
+            UserDAO dao = database.UserDAO();
             databaseWriteExecutor.execute(()->{
-                UserDAO dao = INSTANCE.UserDAO();
+
                 dao.deleteAll();
                 User admin = new User("admin1","admin1");
                 admin.setAdmin(true);

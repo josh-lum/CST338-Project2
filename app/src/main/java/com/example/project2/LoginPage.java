@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 
 import com.example.project2.Database.MonRepository;
 import com.example.project2.Database.UserDAO;
@@ -18,6 +19,7 @@ public class LoginPage extends AppCompatActivity {
     private LoginScreenBinding binding;
     private UserDAO userDAO;
     private MonRepository repository;
+//    private LiveData<User> userObserver;
 
     @Override
     protected void onCreate(Bundle instance){
@@ -56,20 +58,36 @@ public class LoginPage extends AppCompatActivity {
         }
         LiveData<User> userObserver = repository.getUserByUserName(username);
         userObserver.observe(this, user -> {
-            if(user !=null){
-                String password = binding.enPass.getText().toString();
-                if(password.equals(user.getPassword())){
-                    startActivity(MainActivity.MainActivityIntentFactory(getApplicationContext(),user.getId()));
+                if(user !=null){
+                    String password = binding.enPass.getText().toString();
+                    if(password.equals(user.getPassword())){
+                        startActivity(MainActivity.MainActivityIntentFactory(getApplicationContext(),user.getId()));
+                    }else{
+                        toastMaker("Invalid Password");
+                        binding.enPass.setSelection(0);
+                    }
                 }else{
-                    toastMaker("Invalid Password");
-                    binding.enPass.setSelection(0);
-                }
-            }else{
-                toastMaker(username+" is not a valid username");
-                binding.enUser.setSelection(0);
+                    toastMaker(username+" is not a valid username");
+                    binding.enUser.setSelection(0);
 
-            }
-        });
+                }
+            });
+
+//        userObserver.observe(this, user -> {
+//            if(user !=null){
+//                String password = binding.enPass.getText().toString();
+//                if(password.equals(user.getPassword())){
+//                    startActivity(MainActivity.MainActivityIntentFactory(getApplicationContext(),user.getId()));
+//                }else{
+//                    toastMaker("Invalid Password");
+//                    binding.enPass.setSelection(0);
+//                }
+//            }else{
+//                toastMaker(username+" is not a valid username");
+//                binding.enUser.setSelection(0);
+//
+//            }
+//        });
 
     }
 
