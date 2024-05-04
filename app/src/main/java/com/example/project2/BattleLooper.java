@@ -30,6 +30,7 @@ public class BattleLooper extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
+        opponent = new Opponent();
         binding = com.example.project2.databinding.BattleScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         handler = new Handler(Looper.getMainLooper());
