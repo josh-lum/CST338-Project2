@@ -36,8 +36,8 @@ public class BattleLooper extends AppCompatActivity {
         handler = new Handler(Looper.getMainLooper());
 
         // go back to menu screen
-        Button backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
+//        Button backButton = findViewById(R.id.backButton);
+        binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPress();
@@ -45,8 +45,8 @@ public class BattleLooper extends AppCompatActivity {
         });
 
         // deal damage button (its invisible)
-        Button inflictDamageButton = findViewById(R.id.inflictDamageButton);
-        inflictDamageButton.setOnClickListener(new View.OnClickListener() {
+//        Button inflictDamageButton = findViewById(R.id.inflictDamageButton);
+        binding.inflictDamageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 inflictDamage();
@@ -60,6 +60,8 @@ public class BattleLooper extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void run() {
+                int resId = R.drawable.charmander;
+                binding.oppCircle.setImageResource(resId);
                if(opponent.hasMorePokemon()){
                    Pokemon currentMon = opponent.getNextPokemon();
                    if(currentMon.getHp() <= 0){

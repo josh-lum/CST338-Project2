@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.246" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/generation1Button"
         android:layout_width="288dp"
         android:layout_height="60dp"
         android:text="@string/generation_1"
@@ -32,7 +32,7 @@
         app:layout_constraintVertical_bias="0.466" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/generation2Button"
         android:layout_width="288dp"
         android:layout_height="60dp"
         android:text="@string/Generation_2"
@@ -40,18 +40,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.577"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/generation1Button"
         app:layout_constraintVertical_bias="0.114" />
 
     <Button
         android:layout_width="288dp"
         android:layout_height="60dp"
         android:text="@string/generation_3"
+        android:id="@+id/generation3Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.577"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/generation2Button"
         app:layout_constraintVertical_bias="0.161" />
 
 
