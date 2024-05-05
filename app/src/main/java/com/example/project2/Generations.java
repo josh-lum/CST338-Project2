@@ -22,8 +22,11 @@ public class Generations extends AppCompatActivity {
         setContentView(binding.getRoot());
         Intent intent = getIntent();
         int userId = intent.getIntExtra(MainActivity.SHARED_PREFERENCE_USERID_VALUE, -1);
+
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(MainActivity.SHARED_PREFERENCE_USERID_KEY,
                 Context.MODE_PRIVATE);
+//        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(MainActivity.SHARED_PREFERENCE_USERID_KEY,
+//                Context.MODE_PRIVATE);
 //        String username = sharedPreferences.getString("username", "");
 //        int userId = sharedPreferences.getInt("userId", -1);
         binding.generation1Button.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +44,15 @@ public class Generations extends AppCompatActivity {
         binding.generation3Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(Generation2.Generation2IntentFactory(getApplicationContext(),userId));
+                startActivity(Generation2.Generation2IntentFactory(getApplicationContext(), userId));
+            }
+
+        });
+
+        binding.generation3Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(Generation3.Generation3IntentFactory(getApplicationContext(), userId));
             }
         });
     }

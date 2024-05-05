@@ -127,5 +127,9 @@ public class Pokemon {
         this.hp = hp;
     }
 
+    public int getSpriteResourceId() {
+        return PokemonSprites.getSpriteResourceId(name);
+    }
+
 }
 

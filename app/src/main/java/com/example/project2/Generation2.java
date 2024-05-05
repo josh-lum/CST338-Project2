@@ -16,6 +16,7 @@ public class Generation2 extends AppCompatActivity {
     Button chikoritaButton;
     Button cyndaquilButton;
     Button totodileButton;
+    Button backButton;
     Generation2Binding binding;
     private User user;
 
@@ -45,6 +46,17 @@ public class Generation2 extends AppCompatActivity {
                 startActivity(MainActivity.MainActivityIntentFactory(getApplicationContext(),userId));
             }
         });
+
+
+        backButton = findViewById(R.id.backButtonGen2);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Generation2.this, Generations.class);
+                startActivity(intent);
+            }
+        });
+
     }
     static Intent Generation2IntentFactory(Context context, int userId){
         Intent intent = new Intent(context, Generation2.class);
