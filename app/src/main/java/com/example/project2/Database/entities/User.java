@@ -8,6 +8,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.example.project2.Database.MonDatabase;
+import com.example.project2.Pokemon;
 
 import java.util.Objects;
 
@@ -23,6 +24,7 @@ public class User {
     private String password;
 
     private boolean isAdmin;
+
 
 
     public User(String username, String password) {
@@ -76,4 +78,6 @@ public class User {
     public void setAdmin(boolean admin) {
         isAdmin = admin;
     }
+
+
 }
