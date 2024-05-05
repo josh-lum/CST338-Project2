@@ -64,4 +64,13 @@
     <string name="torchic">torchic</string>
     <string name="treecko">treecko</string>
     <string name="mudkip">mudkip</string>
+    <string name="bulbasaurspriteinvisible">bulbasaurSpriteInvisible</string>
+    <string name="charmanderspriteinvisible">charmanderspriteinvisible</string>
+    <string name="squirtlepriteinvisible">squirtlepriteinvisible</string>
+    <string name="chikoritapriteinvisible">chikoritapriteinvisible</string>
+    <string name="cyndaquilspriteinvisible">cyndaquilspriteinvisible</string>
+    <string name="totodilespriteinvisible">totodilespriteinvisible</string>
+    <string name="treeckospriteinvisible">treeckospriteinvisible</string>
+    <string name="torchicspriteinvisible">torchicspriteinvisible</string>
+    <string name="mudkipspriteinvisible">mudkipspriteinvisible</string>
 </resources>
