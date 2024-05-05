@@ -42,17 +42,18 @@ public class BattleLooper extends AppCompatActivity {
         handler = new Handler(Looper.getMainLooper());
 
         // go back to menu screen
-//        Button backButton = findViewById(R.id.backButton);
+          //Button backButton = findViewById(R.id.backButton);
         binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(BattleLooper.this, "Button clicked", Toast.LENGTH_SHORT).show();
                 onBackPress();
             }
         });
 
         // deal damage button (its invisible)
-//        Button inflictDamageButton = findViewById(R.id.inflictDamageButton);
-        binding.inflictDamageButton.setOnClickListener(new View.OnClickListener() {
+        Button inflictDamageButton = findViewById(R.id.inflictDamageButton);
+        inflictDamageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 inflictDamage();
@@ -67,6 +68,7 @@ public class BattleLooper extends AppCompatActivity {
             int num = -1;
             @Override
             public void run() {
+                binding.userCircle.setImageResource(R.drawable.blastoise);
                 int resId = updateSprite(num += 1);
                 binding.oppCircle.setImageResource(resId);
                if(opponent.hasMorePokemon()){
