@@ -65,7 +65,6 @@ public class BattleLooper extends AppCompatActivity {
             int num = -1;
             @Override
             public void run() {
-
                if(opponent.hasMorePokemon()){
                    Pokemon currentMon = opponent.getNextPokemon();
                    if(currentMon.getHp() <= 0){

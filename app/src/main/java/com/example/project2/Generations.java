@@ -38,6 +38,13 @@ public class Generations extends AppCompatActivity {
                 startActivity(Generation2.Generation2IntentFactory(getApplicationContext(),userId));
             }
         });
+
+        binding.generation3Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(Generation3.Generation3IntentFactory(getApplicationContext(), userId));
+            }
+        });
     }
     static Intent GenerationsIntentFactory(Context context, int userId){
         Intent intent = new Intent(context, Generations.class);
