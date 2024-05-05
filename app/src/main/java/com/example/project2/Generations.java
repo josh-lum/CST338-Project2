@@ -20,20 +20,28 @@ public class Generations extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = com.example.project2.databinding.GenerationPickerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(MainActivity.SHARED_PREFERENCE_USERID_KEY,
-                Context.MODE_PRIVATE);
-        String username = sharedPreferences.getString("username", "");
-        int userId = sharedPreferences.getInt("userId", -1);
+        Intent intent = getIntent();
+        int userId = intent.getIntExtra(MainActivity.SHARED_PREFERENCE_USERID_VALUE, -1);
+//        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(MainActivity.SHARED_PREFERENCE_USERID_KEY,
+//                Context.MODE_PRIVATE);
+//        String username = sharedPreferences.getString("username", "");
+//        int userId = sharedPreferences.getInt("userId", -1);
         binding.generation1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(Generation1.Generation1IntentFactory(getApplicationContext(),userId));
             }
         });
+        binding.generation2Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(Generation2.Generation2IntentFactory(getApplicationContext(),userId));
+            }
+        });
     }
     static Intent GenerationsIntentFactory(Context context, int userId){
         Intent intent = new Intent(context, Generations.class);
-        intent.putExtra(GENERATIONS_USER_ID, userId);
+        intent.putExtra(MainActivity.SHARED_PREFERENCE_USERID_KEY, userId);
         return intent;
     }
 

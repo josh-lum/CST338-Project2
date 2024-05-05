@@ -102,7 +102,7 @@ public class CreateAccount extends AppCompatActivity {
                     editor.putInt("userId", newUser.getId());
                     editor.apply();
                     startActivity(Generations.GenerationsIntentFactory(getApplicationContext(),newUser.getId()));
-//
+                    finish();
                 }
             }
         });

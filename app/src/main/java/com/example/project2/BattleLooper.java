@@ -89,8 +89,8 @@ public class BattleLooper extends AppCompatActivity {
         }
     }
     public void onBackPress(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+
+        startActivity(MainActivity.MainActivityIntentFactory(getApplicationContext(),user.getId()));
         finish();
     }
 

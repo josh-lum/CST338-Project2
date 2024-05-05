@@ -16,6 +16,12 @@
             android:name=".Generation1"
             android:exported="false" />
         <activity
+            android:name=".Generation2"
+            android:exported="false" />
+        <activity
+            android:name=".Generation3"
+            android:exported="false" />
+        <activity
             android:name=".Generations"
             android:exported="false" />
         <activity
