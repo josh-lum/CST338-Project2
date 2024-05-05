@@ -16,7 +16,7 @@ import java.util.List;
 @Dao
 public interface UserDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(User... user);
+    void insert(User user);
 
     @Update
     void update(User user);
@@ -24,8 +24,7 @@ public interface UserDAO {
     @Delete
     void delete(User user);
 
-//    @Query("SELECT * FROM "+MonDatabase.USER_TABLE +" WHERE username = :username")
-//    List<User> getUsername(String username);
+
     @Query("SELECT * FROM " + MonDatabase.USER_TABLE)
     LiveData<List<User>> getAllRecords();
 

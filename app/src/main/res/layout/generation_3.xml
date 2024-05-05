@@ -86,6 +86,7 @@
         tools:layout_editor_absoluteY="482dp" />
 
     <Button
+        android:id="@+id/treeckoButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.109"
@@ -100,6 +101,7 @@
         tools:layout_editor_absoluteY="146dp" />
 
     <Button
+        android:id="@+id/torchicButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
@@ -114,6 +116,7 @@
         tools:layout_editor_absoluteY="98dp" />
 
     <Button
+        android:id="@+id/mudkipButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.922"

@@ -16,11 +16,12 @@ import com.example.project2.MainActivity;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Mon.class, User.class}, version = 3, exportSchema = false)
+@Database(entities = {Mon.class, User.class, Party.class}, version = 7, exportSchema = false)
 public abstract class MonDatabase extends RoomDatabase {
     public static final String USER_TABLE = "userTable";
     public static final String DATABASE_NAME = "Mon_Database";
     public static final String MON_TABLE = "monTable";
+    public static final String PARTY_TABLE = "partyTable";
 
     private static volatile MonDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
@@ -33,7 +34,7 @@ public abstract class MonDatabase extends RoomDatabase {
                 if(INSTANCE==null){
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             MonDatabase.class,
-                            USER_TABLE).fallbackToDestructiveMigration().addCallback(addDefaultValues).build();
+                            DATABASE_NAME).fallbackToDestructiveMigration().addCallback(addDefaultValues).build();
 
                 }
             }
@@ -50,7 +51,7 @@ public abstract class MonDatabase extends RoomDatabase {
 
             databaseWriteExecutor.execute(()->{
                 MonDatabase database = INSTANCE;
-                UserDAO dao = database.UserDAO();
+                UserDAO dao = INSTANCE.UserDAO();
                 dao.deleteAll();
                 User admin = new User("admin1","admin1");
                 admin.setAdmin(true);

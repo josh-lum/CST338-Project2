@@ -3,6 +3,7 @@ package com.example.project2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = "DAC_MON";
     private MonRepository repository;
     private int loggedInUserId = -1;
-    private User user;
+
 
 
 
@@ -67,21 +68,30 @@ public class MainActivity extends AppCompatActivity {
              return null;
         }
      */
+    private LiveData<User> user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = com.example.project2.databinding.ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-//        repository.invokeDB();
+
         repository = MonRepository.getRepository(getApplication());
-//        assert repository !=null;
+
 
         logInUser(savedInstanceState);
-///        invalidateOptionsMenu();
+
         if(loggedInUserId == -1){
             Intent intent = LoginPage.loginIntentFactory(getApplicationContext());
             startActivity(intent);
+        }else {
+            user = repository.getUserByUserId(loggedInUserId);
+            user.observe(this, newUser -> {
+                // Update UI or perform actions based on the user data
+                // For example, update UI elements with user information
+                // newUser will contain the latest user data from the database
+            });
         }
+        user = repository.getUserByUserId(loggedInUserId);
 
 
         binding.LogOutMain.setOnClickListener(new View.OnClickListener() {
@@ -93,9 +103,7 @@ public class MainActivity extends AppCompatActivity {
         binding.BattleMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BattleLooper.class);
-//                intent.putExtra(MAIN_ACTIVITY_USER_ID, user.getId());
-                startActivity(intent);
+                startActivity(BattleLooper.BattleLooperIntentFactory(getApplicationContext(),loggedInUserId));
             }
         });
 

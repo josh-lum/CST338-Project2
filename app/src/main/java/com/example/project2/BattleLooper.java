@@ -7,6 +7,7 @@ import com.example.project2.Database.entities.User;
 import com.example.project2.databinding.BattleScreenBinding;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,6 +25,7 @@ public class BattleLooper extends AppCompatActivity {
     private Mon mon;
     private Opponent opponent;
     private User user;
+    private int userId;
     private BattleScreenBinding binding;
 
 
@@ -88,10 +90,16 @@ public class BattleLooper extends AppCompatActivity {
             updateOpponentPokemonHealth();
         }
     }
+
     public void onBackPress(){
 
         startActivity(MainActivity.MainActivityIntentFactory(getApplicationContext(),user.getId()));
         finish();
+    }
+    static Intent BattleLooperIntentFactory(Context context, int userId){
+        Intent intent = new Intent(context, BattleLooper.class);
+        intent.putExtra(MainActivity.SHARED_PREFERENCE_USERID_KEY, userId);
+        return intent;
     }
 
 }

@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 
 import com.example.project2.Database.entities.Mon;
+import com.example.project2.Database.entities.Party;
 import com.example.project2.Database.entities.User;
 import com.example.project2.MainActivity;
 
@@ -17,6 +18,7 @@ import java.util.concurrent.Future;
 public class MonRepository {
     private MonDao monDao;
     private UserDAO userDao;
+    private PartyDAO partyDAO;
     private ArrayList<Mon> allMon;
     private static MonRepository repository;
 
@@ -68,8 +70,13 @@ public class MonRepository {
             monDao.insert(mon);
                 });
     }
+    public void insertParty(Party party){
+        MonDatabase.databaseWriteExecutor.execute(()->{
+            partyDAO.insert(party);
+        });
+    }
     public void invokeDB(){MonDatabase.databaseWriteExecutor.execute(userDao::getAllRecords);}
-    public void insertUser(User... user){
+    public void insertUser(User user){
         MonDatabase.databaseWriteExecutor.execute(()->{
             userDao.insert(user);
         });

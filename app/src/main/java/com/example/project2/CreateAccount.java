@@ -78,7 +78,7 @@ public class CreateAccount extends AppCompatActivity {
             return;
         }
 
-        // Check if the username already exists
+
         LiveData<User> existingUser = repository.getUserByUserName(username);
         existingUser.observe(this, new Observer<User>() {
 
@@ -98,7 +98,6 @@ public class CreateAccount extends AppCompatActivity {
                     toastMaker("Account created successfully");
                     SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.SHARED_PREFERENCE_USERID_KEY, MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("username", username);
                     editor.putInt("userId", newUser.getId());
                     editor.apply();
                     startActivity(Generations.GenerationsIntentFactory(getApplicationContext(),newUser.getId()));

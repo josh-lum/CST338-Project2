@@ -14,7 +14,7 @@ import java.util.List;
 @Dao
 public interface MonDao {
     @Insert(onConflict =OnConflictStrategy.REPLACE)
-    void insert(Mon mon);
+    void insert(Mon... mon);
 
 //    @Delete
 //    void delete(Mon mon);

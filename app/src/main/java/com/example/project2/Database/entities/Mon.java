@@ -13,38 +13,23 @@ public class Mon {
     @PrimaryKey(autoGenerate = true)
     private Integer idNumber;
 
-    private int userId;
+
     private String name;
-    private int sprite;
+
 
     private int xp;
     private int level;
     private int damage;
 
-    public Mon(int userId, String name,  int xp, int level, int damage, int sprite) {
+    public Mon( String name,  int xp, int level, int damage) {
         this.name = name;
-        this.sprite= sprite;
         this.xp = xp;
         this.level = level;
         this.damage = damage;
-        this.userId = userId;
     }
 
-    public int getSprite() {
-        return sprite;
-    }
 
-    public void setSprite(int sprite) {
-        this.sprite = sprite;
-    }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 
     public Integer getIdNumber() {
         return idNumber;
@@ -92,11 +77,11 @@ public class Mon {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Mon mon = (Mon) o;
-        return userId == mon.userId && sprite == mon.sprite && xp == mon.xp && level == mon.level && damage == mon.damage && Objects.equals(idNumber, mon.idNumber) && Objects.equals(name, mon.name);
+        return  xp == mon.xp && level == mon.level && damage == mon.damage && Objects.equals(idNumber, mon.idNumber) && Objects.equals(name, mon.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idNumber, userId, name, sprite, xp, level, damage);
+        return Objects.hash(idNumber, name, xp, level, damage);
     }
 }

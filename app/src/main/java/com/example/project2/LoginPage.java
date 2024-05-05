@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 
+import com.example.project2.Database.MonDatabase;
 import com.example.project2.Database.MonRepository;
 import com.example.project2.Database.UserDAO;
 import com.example.project2.Database.entities.User;
@@ -29,7 +30,8 @@ public class LoginPage extends AppCompatActivity {
         super.onCreate(instance);
         binding = LoginScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        MonDatabase db = MonDatabase.getDatabase(this);
+        userDAO = db.UserDAO();
         repository = MonRepository.getRepository(getApplication());
 
 
