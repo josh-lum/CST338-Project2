@@ -46,7 +46,6 @@ public class BattleLooper extends AppCompatActivity {
         binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(BattleLooper.this, "Button clicked", Toast.LENGTH_SHORT).show();
                 onBackPress();
             }
         });
@@ -56,6 +55,7 @@ public class BattleLooper extends AppCompatActivity {
         inflictDamageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(BattleLooper.this, "Button clicked", Toast.LENGTH_SHORT).show();
                 inflictDamage();
             }
         });
