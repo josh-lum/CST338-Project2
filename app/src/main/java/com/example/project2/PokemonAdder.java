@@ -37,10 +37,29 @@ public class PokemonAdder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         bulbasaur = findViewById(R.id.bulbasaurButton);
+        bulbasaurImageView = findViewById(R.id.bulbasaurImageViewInvisible);
         bulbasaur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bulbasaurImageView.setVisibility(View.VISIBLE);
+            }
+        });
 
+        charmander = findViewById(R.id.charmanderButton);
+        charmanderImageView = findViewById(R.id.charmanderImageViewInvisible);
+        charmander.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                charmanderImageView.setVisibility(View.VISIBLE);
+            }
+        });
+
+        squirtle = findViewById(R.id.squirtleButton);
+        bulbasaurImageView = findViewById(R.id.bulbasaurImageViewInvisible);
+        bulbasaur.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bulbasaurImageView.setVisibility(View.VISIBLE);
             }
         });
     }
