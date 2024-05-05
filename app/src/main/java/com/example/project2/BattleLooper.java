@@ -14,6 +14,7 @@ import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class BattleLooper extends AppCompatActivity {
 
@@ -27,10 +28,11 @@ public class BattleLooper extends AppCompatActivity {
     private BattleScreenBinding binding;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstance){
         int num = 0;
-
+        updateSprite(num);
         super.onCreate(savedInstance);
         opponent = new Opponent();
         binding = com.example.project2.databinding.BattleScreenBinding.inflate(getLayoutInflater());
@@ -60,12 +62,15 @@ public class BattleLooper extends AppCompatActivity {
     private void startGameLoop(){
         handler.postDelayed(new Runnable() {
             @SuppressLint("SetTextI18n")
+            int num = -1;
             @Override
             public void run() {
+
                if(opponent.hasMorePokemon()){
                    Pokemon currentMon = opponent.getNextPokemon();
                    if(currentMon.getHp() <= 0){
                        opponent.switchToNextPokemon();
+                       updateSprite(num += 1);
                    }
                    updateOpponentPokemonHealth();
                    handler.postDelayed(this, damageInterval);
@@ -94,8 +99,29 @@ public class BattleLooper extends AppCompatActivity {
         finish();
     }
 
-    public int updateSprite(){
-
+    public int updateSprite(int num){
+        if(num == 0){
+            return R.drawable.bulbasaur;
+        }else if(num == 1){
+            return R.drawable.charmander;
+        }else if(num == 2){
+            return R.drawable.squirtle;
+        }else if(num == 3){
+            return R.drawable.chikorita;
+        }else if(num == 4){
+            return R.drawable.cyndaquil;
+        }else if(num == 5){
+            return R.drawable.totodile;
+        }else if(num == 6){
+            return R.drawable.treecko;
+        }else if(num == 7){
+            return R.drawable.torchic;
+        }else if(num == 8){
+            return R.drawable.mudkip;
+        }else{
+            Toast.makeText(this, "Victory", Toast.LENGTH_SHORT).show();
+            return R.drawable.cynthia;
+        }
     }
 
 }
