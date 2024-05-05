@@ -67,7 +67,7 @@ public class BattleLooper extends AppCompatActivity {
             int num = -1;
             @Override
             public void run() {
-                int resId = R.drawable.charmander;
+                int resId = updateSprite(num += 1);
                 binding.oppCircle.setImageResource(resId);
                if(opponent.hasMorePokemon()){
                    Pokemon currentMon = opponent.getNextPokemon();
@@ -76,6 +76,7 @@ public class BattleLooper extends AppCompatActivity {
                        updateSprite(num += 1);
                    }
                    updateOpponentPokemonHealth();
+                   damageInterval = calculateNewDamageInterval(DAMAGE_INTERVAL, currentMon.getDmg());
                    handler.postDelayed(this, damageInterval);
                }else{
                    TextView victoryTextView = findViewById(R.id.victoryScreenTextView);
@@ -92,16 +93,21 @@ public class BattleLooper extends AppCompatActivity {
     private void inflictDamage(){
         if(opponent.hasMorePokemon()){
             Pokemon currentMon = opponent.getNextPokemon();
+            damageInterval = calculateNewDamageInterval(damageInterval, DAMAGE_TICK);
             currentMon.setDmg(DAMAGE_TICK);
             updateOpponentPokemonHealth();
         }
     }
 
     public void onBackPress(){
-
         startActivity(MainActivity.MainActivityIntentFactory(getApplicationContext(),user.getId()));
         finish();
     }
+
+    private int calculateNewDamageInterval(int currentInterval, int damageInflicted){
+        return currentInterval + damageInflicted;
+    }
+
     static Intent BattleLooperIntentFactory(Context context, int userId){
         Intent intent = new Intent(context, BattleLooper.class);
         intent.putExtra(MainActivity.SHARED_PREFERENCE_USERID_KEY, userId);
