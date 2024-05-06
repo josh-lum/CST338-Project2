@@ -128,8 +128,7 @@ public class BattleLooper extends AppCompatActivity {
     private void updateSprites(int num) {
         int resId = updateSprite(num);
         // replace with what user has
-        //TODO: squib
-        binding.userCircle.setImageResource();
+        binding.userCircle.setImageResource(R.drawable.fennekin);
         binding.oppCircle.setImageResource(resId);
     }
 

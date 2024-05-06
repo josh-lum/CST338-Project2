@@ -18,6 +18,7 @@ public interface PartyDAO {
     @Update
     void update(Party party);
 
-    @Query("SELECT * FROM "+ MonDatabase.PARTY_TABLE+" WHERE userId == :userId")
-    Party getPartyByUserId(int userId);
+    @Query("SELECT * FROM "+ MonDatabase.PARTY_TABLE+" WHERE userId == :userid")
+    Party getPartyByUserId(int userid);
+
 }

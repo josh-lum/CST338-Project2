@@ -100,6 +100,8 @@ public class MonRepository {
 
 
     }
+    public Mon getMonByMonId(int id){return monDao.getMonByMonId(id);}
+    public Party getPartyByUserId(int userId){return partyDAO.getPartyByUserId(userId);}
 
     public LiveData<User> getUserByUserId(int id) {
         return userDao.getUserByUserId(id);
