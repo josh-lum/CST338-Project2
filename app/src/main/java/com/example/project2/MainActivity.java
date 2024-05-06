@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     static final String SHARED_PREFERENCE_USERID_KEY="com.example.project2.SHARED_PREFERENCE_USERID_KEY";
     static final String SHARED_PREFERENCE_USERID_VALUE = "com.example.project2.SHARED_PREFERENCE_USERID_VALUE";
     private ActivityMainBinding binding;
-    private static final String MAIN_ACTIVITY_USER_ID ="com.example.project2.MAIN_ACTIVITY_USER_ID";
+    static final String MAIN_ACTIVITY_USER_ID ="com.example.project2.MAIN_ACTIVITY_USER_ID";
     private static final String SAVED_INSTANCE_STATE_USERID_KEY ="com.example.project2.SAVED_INSTANCE_STATE_USERID_KEY";
     private static final String SAVED_INSTANCE_STATE_USERID_VALUE ="com.example.project2.SAVED_INSTANCE_STATE_USERID_VALUE";
 
