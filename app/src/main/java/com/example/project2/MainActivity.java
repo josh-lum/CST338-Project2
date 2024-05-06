@@ -36,38 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private MonRepository repository;
     private int loggedInUserId = -1;
 
-
-
-
-    //commented out but its from GymLog
-
-//    public MonRepository(Application application){
-  //      MonDatabase db = MonDatabase.getDatabase(application) {
-    //        this.MonDao = MonDatabase.MonDao();
-      //      this.alllogs = (ArrayList</*Pokemon I think */>) this.MonDao.getAllRecords();
-        //}
-
-   // }
-
-    //also from GymLog
-
-    /*
-        public ArrayList<Pokemon> getAllLogs(){
-            Future<Arraylist<Pokemon>> future = MonDatabase.databaseWriteExecutor.submit(
-                new Callable<ArrayList<Pokemon>>(){
-                   @Override
-                   public Arraylist<Pokemon> call() throws Exception{
-                        return (ArrayList<Pokemon>) MonDao.getAllRecords();
-                   }
-                });
-             try{
-                return future.get();
-             }catch (InterruptedException | ExecutionException e){
-             Log.i(MainActivity.TAG, "Problem whne getting all logs in repo"
-             }
-             return null;
-        }
-     */
     private LiveData<User> user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,9 +54,7 @@ public class MainActivity extends AppCompatActivity {
         }else {
             user = repository.getUserByUserId(loggedInUserId);
             user.observe(this, newUser -> {
-                // Update UI or perform actions based on the user data
-                // For example, update UI elements with user information
-                // newUser will contain the latest user data from the database
+
             });
         }
         user = repository.getUserByUserId(loggedInUserId);
@@ -107,68 +73,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-        /* need to change more in future but:
-
-           getGenerationNumber.setOnClickListener(new View.OnClickListener);
-
-
-         */
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater= getMenuInflater();
-//        inflater.inflate(R.menu.logoutmenu, menu);
-//        return true;
-//    }
-
-//    @Override
-//    public boolean onPrepareOptionsMenu(Menu menu) {
-//        MenuItem item = menu.findItem(R.id.LogOutMenuItem);
-//        item.setVisible(true);
-//        if(user==null) return false;
-//        item.setTitle(user.getUsername());
-//        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(@NonNull MenuItem item) {
-//                showLogoutDialog();
-//                return false;
-//            }
-//        });
-//        return true;
-//    }
-//    private void showLogoutDialog(){
-//        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainActivity.this);
-//        final AlertDialog alertDialog = alertBuilder.create();
-//
-//        alertBuilder.setMessage("Logout?");
-//
-//        alertBuilder.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                logout();
-//            }
-//        });
-//        alertBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                alertDialog.dismiss();
-//            }
-//        });
-//        alertBuilder.create().show();
-//    }
-
-
-    private void logout() {
+    void logout() {
         SharedPreferences sharedPreferences = getApplication().getSharedPreferences(SHARED_PREFERENCE_USERID_KEY,Context.MODE_PRIVATE);
         SharedPreferences.Editor sharedPrefEditor = sharedPreferences.edit();
         sharedPrefEditor.putInt(SHARED_PREFERENCE_USERID_KEY,LOGGED_OUT);
         startActivity(LoginPage.loginIntentFactory(getApplicationContext()));
         sharedPrefEditor.apply();
-
-//        Intent intent =
     }
 
     private void logInUser(Bundle savedInstanceState){
@@ -186,9 +98,6 @@ public class MainActivity extends AppCompatActivity {
         if(loggedInUserId==LOGGED_OUT){
             return;
         }
-
-
-
 
     }
 

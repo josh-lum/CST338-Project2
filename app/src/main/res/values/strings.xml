@@ -73,4 +73,5 @@
     <string name="treeckospriteinvisible">treeckospriteinvisible</string>
     <string name="torchicspriteinvisible">torchicspriteinvisible</string>
     <string name="mudkipspriteinvisible">mudkipspriteinvisible</string>
+    <string name="auto_win">auto win!</string>
 </resources>

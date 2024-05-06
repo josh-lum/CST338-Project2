@@ -1,7 +1,12 @@
 package com.example.project2;
 
-import androidx.appcompat.app.AppCompatActivity;
+import static com.example.project2.Database.MonRepository.repository;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+
+import com.example.project2.Database.MonRepository;
 import com.example.project2.Database.entities.Mon;
 import com.example.project2.Database.entities.User;
 import com.example.project2.databinding.BattleScreenBinding;
@@ -20,25 +25,26 @@ import android.widget.Toast;
 
 public class BattleLooper extends AppCompatActivity {
 
-    private static final int DAMAGE_TICK = 2;
-    private static final int DAMAGE_INTERVAL = 1000;
-    private int damageInterval = DAMAGE_INTERVAL;
+    private Opponent opponent;
+    public static final int DAMAGE_TICK = 2;
     private Handler handler;
     private Mon mon;
-    private Opponent opponent;
+    //public Opponent opponent;
     private User user;
     private int userId;
     private BattleScreenBinding binding;
     private MediaPlayer mediaPlayer;
-
+    private Button adminButton;
+    private MonRepository repository;
 
 
     @Override
-    protected void onCreate(Bundle savedInstance){
+    protected void onCreate(Bundle savedInstance) {
+        repository = MonRepository.getRepository(getApplication());
+        opponent = new Opponent();
         int num = 0;
         updateSprite(num);
         super.onCreate(savedInstance);
-        opponent = new Opponent();
         binding = com.example.project2.databinding.BattleScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         handler = new Handler(Looper.getMainLooper());
@@ -49,6 +55,29 @@ public class BattleLooper extends AppCompatActivity {
         mediaPlayer.setLooping(true);
         mediaPlayer.start();
 
+
+        int userId = getIntent().getIntExtra(MainActivity.SHARED_PREFERENCE_USERID_KEY, -1);
+        adminButton = findViewById(R.id.autowinadmin);
+        LiveData<User> userObserver = repository.getUserByUserId(userId);
+        userObserver.observe(this, new Observer<User>() {
+            @Override
+            public void onChanged(User observedUser) {
+                if (observedUser != null) {
+                    user = observedUser;
+                    if (user.isAdmin()) {
+                        adminButton.setVisibility(View.VISIBLE);
+                    } else {
+                        adminButton.setVisibility(View.GONE);
+                    }
+                }
+            }
+        });
+        adminButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setContentView(R.layout.victory_screen);
+            }
+        });
 
         // go back to menu screen
           //Button backButton = findViewById(R.id.backButton);
@@ -76,7 +105,7 @@ public class BattleLooper extends AppCompatActivity {
         opponent.getNextPokemon().getHp();
     }
 
-    private void inflictDamage(){
+    void inflictDamage(){
         if(opponent.hasMorePokemon()){
             Pokemon currentMon = opponent.getNextPokemon();
             currentMon.setHp(currentMon.getHp() - DAMAGE_TICK);
@@ -130,5 +159,4 @@ public class BattleLooper extends AppCompatActivity {
             return R.drawable.cynthia;
         }
     }
-
 }

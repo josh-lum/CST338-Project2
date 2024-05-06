@@ -189,5 +189,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.882" />
 
+    <Button
+        android:id="@+id/autowinadmin"
+        android:layout_width="130dp"
+        android:layout_height="52dp"
+        android:text="@string/auto_win"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.434"
+        android:visibility="invisible" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

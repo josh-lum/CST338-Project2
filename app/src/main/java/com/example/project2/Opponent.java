@@ -3,10 +3,10 @@ package com.example.project2;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Opponent {
+public class Opponent{
     // queue of mons for now
-    private Queue<Pokemon> pokemonQueue;
-    private int currentMonIndex;
+    public Queue<Pokemon> pokemonQueue;
+    public int currentMonIndex;
 
     public Opponent(){
         pokemonQueue = new LinkedList<>();
