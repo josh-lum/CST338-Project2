@@ -10,10 +10,10 @@ public class Party {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    private Integer userId;
-    private Integer monId;
+    private int userId;
+    private int monId;
 
-    public Party(Integer userId, Integer monId) {
+    public Party(int userId, int monId) {
         this.userId = userId;
         this.monId = monId;
     }
@@ -26,19 +26,19 @@ public class Party {
         this.id = id;
     }
 
-    public Integer getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
-    public Integer getMonId() {
+    public int getMonId() {
         return monId;
     }
 
-    public void setMonId(Integer monId) {
+    public void setMonId(int monId) {
         this.monId = monId;
     }
 }
