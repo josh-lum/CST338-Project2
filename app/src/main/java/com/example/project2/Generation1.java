@@ -33,15 +33,15 @@ public class Generation1 extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Intent intent = getIntent();
-        int userId = intent.getIntExtra(MainActivity.SHARED_PREFERENCE_USERID_VALUE, -1);
+        int userId = intent.getIntExtra(MainActivity.MAIN_ACTIVITY_USER_ID, -1);
         repository = MonRepository.getRepository(getApplication());
         binding.bulbasaurButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Mon mon = new Mon("BULBASAUR",0,0, 10);
-                repository.insertMon(mon);
-                Party party = new Party(userId,mon.getIdNumber());
-                repository.insertParty(party);
+//                Mon mon = new Mon("BULBASAUR",0,0, 10);
+//                repository.insertMon(mon);
+//                Party party = new Party(userId,mon.getIdNumber());
+//                repository.insertParty(party);
                 startActivity(MainActivity.MainActivityIntentFactory(getApplicationContext(),userId));
             }
         });

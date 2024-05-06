@@ -21,10 +21,10 @@ public class Generations extends AppCompatActivity {
         binding = com.example.project2.databinding.GenerationPickerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         Intent intent = getIntent();
-        int userId = intent.getIntExtra(MainActivity.SHARED_PREFERENCE_USERID_VALUE, -1);
+        int userId = intent.getIntExtra(MainActivity.MAIN_ACTIVITY_USER_ID, -1);
 
-        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(MainActivity.SHARED_PREFERENCE_USERID_KEY,
-                Context.MODE_PRIVATE);
+//        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(MainActivity.SHARED_PREFERENCE_USERID_KEY,
+//                Context.MODE_PRIVATE);
 //        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(MainActivity.SHARED_PREFERENCE_USERID_KEY,
 //                Context.MODE_PRIVATE);
 //        String username = sharedPreferences.getString("username", "");
@@ -58,7 +58,7 @@ public class Generations extends AppCompatActivity {
     }
     static Intent GenerationsIntentFactory(Context context, int userId){
         Intent intent = new Intent(context, Generations.class);
-        intent.putExtra(MainActivity.SHARED_PREFERENCE_USERID_KEY, userId);
+        intent.putExtra(MainActivity.MAIN_ACTIVITY_USER_ID, userId);
         return intent;
     }
 
