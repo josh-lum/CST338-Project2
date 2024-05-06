@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight"
-        tools:targetApi="31">
+        tools:targetApi="34">
         <activity
             android:name=".Generation1"
             android:exported="false" />

@@ -16,7 +16,7 @@ import com.example.project2.MainActivity;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Mon.class, User.class, Party.class}, version = 8, exportSchema = false)
+@Database(entities = {Mon.class, User.class, Party.class}, version = 9, exportSchema = false)
 public abstract class MonDatabase extends RoomDatabase {
     public static final String USER_TABLE = "userTable";
     public static final String DATABASE_NAME = "MonDatabase";
@@ -65,4 +65,5 @@ public abstract class MonDatabase extends RoomDatabase {
 
     public abstract MonDao MonDAO();
     public abstract UserDAO UserDAO();
+    public abstract PartyDAO partyDAO();
 }
