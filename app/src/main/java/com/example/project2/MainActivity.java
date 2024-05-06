@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     static final String SHARED_PREFERENCE_USERID_VALUE = "com.example.project2.SHARED_PREFERENCE_USERID_VALUE";
     private ActivityMainBinding binding;
     static final String MAIN_ACTIVITY_USER_ID ="com.example.project2.MAIN_ACTIVITY_USER_ID";
-    private static final String SAVED_INSTANCE_STATE_USERID_KEY ="com.example.project2.SAVED_INSTANCE_STATE_USERID_KEY";
+    static final String SAVED_INSTANCE_STATE_USERID_KEY ="com.example.project2.SAVED_INSTANCE_STATE_USERID_KEY";
     private static final String SAVED_INSTANCE_STATE_USERID_VALUE ="com.example.project2.SAVED_INSTANCE_STATE_USERID_VALUE";
 
     public static final String TAG = "DAC_MON";
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
              return null;
         }
      */
-    private LiveData<User> user;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,22 +76,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         repository = MonRepository.getRepository(getApplication());
-
+//        repository.invokeDB();
 
         logInUser(savedInstanceState);
 
         if(loggedInUserId == -1){
             Intent intent = LoginPage.loginIntentFactory(getApplicationContext());
             startActivity(intent);
-        }else {
-            user = repository.getUserByUserId(loggedInUserId);
-            user.observe(this, newUser -> {
-                // Update UI or perform actions based on the user data
-                // For example, update UI elements with user information
-                // newUser will contain the latest user data from the database
-            });
         }
-        user = repository.getUserByUserId(loggedInUserId);
+//        user = repository.getUserByUserId(loggedInUserId);
 
 
         binding.LogOutMain.setOnClickListener(new View.OnClickListener() {

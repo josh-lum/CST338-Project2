@@ -94,27 +94,18 @@ public class CreateAccount extends AppCompatActivity {
                         return;
                     }
                     User newUser = new User(username, password);
-                    repository.insertUser(newUser);
+                    int userId = (int)repository.insertUser(newUser);
                     toastMaker("Account created successfully");
-                    SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.SHARED_PREFERENCE_USERID_KEY, MODE_PRIVATE);
+                    SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.SHARED_PREFERENCE_USERID_VALUE, MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putInt("userId", newUser.getId());
+                    editor.putInt(MainActivity.SHARED_PREFERENCE_USERID_KEY, userId);
                     editor.apply();
-                    startActivity(Generations.GenerationsIntentFactory(getApplicationContext(),newUser.getId()));
+                    startActivity(Generations.GenerationsIntentFactory(getApplicationContext(),userId));
                     finish();
                 }
             }
         });
     }
-//    private void verifyUser(){
-//        String username = binding.createUser.getText().toString();
-//
-//        if(username.isEmpty()){
-//            toastMaker("Username may not be blank");
-//            return;
-//        }
-//
-//
 //
 //    }
     static Intent CreateAccountIntentFactory(Context context){

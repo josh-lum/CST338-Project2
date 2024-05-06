@@ -26,6 +26,7 @@ public class MonRepository {
         MonDatabase db = MonDatabase.getDatabase(application);
         this.userDao = db.UserDAO();
         this.monDao = db.MonDAO();
+        this.partyDAO = db.partyDAO();
         this.allMon = (ArrayList<Mon>) this.monDao.getAllRecords();
     }
     public ArrayList<Mon> getAllMon(){
@@ -65,10 +66,15 @@ public class MonRepository {
         }
         return null;
     }
-    public void insertMon(Mon mon){
-        MonDatabase.databaseWriteExecutor.execute(()->{
-            monDao.insert(mon);
-                });
+    public long insertMon(Mon mon){
+        Future<Long> future = MonDatabase.databaseWriteExecutor.submit(() -> monDao.insert(mon));
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+            Log.i(MainActivity.TAG, "Problem when inserting user in the repository");
+            return -1;
+        }
     }
     public void insertParty(Party party){
         MonDatabase.databaseWriteExecutor.execute(()->{
@@ -76,10 +82,16 @@ public class MonRepository {
         });
     }
     public void invokeDB(){MonDatabase.databaseWriteExecutor.execute(userDao::getAllRecords);}
-    public void insertUser(User user){
-        MonDatabase.databaseWriteExecutor.execute(()->{
-            userDao.insert(user);
-        });
+    public long insertUser(User user){
+        Future<Long> future = MonDatabase.databaseWriteExecutor.submit(() -> userDao.insert(user));
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+            Log.i(MainActivity.TAG, "Problem when inserting user in the repository");
+            return -1;
+        }
+
     }
 
 
