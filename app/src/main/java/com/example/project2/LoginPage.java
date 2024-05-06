@@ -41,7 +41,6 @@ public class LoginPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(CreateAccount.CreateAccountIntentFactory(getApplicationContext()));
-
             }
         });
 
@@ -60,7 +59,7 @@ public class LoginPage extends AppCompatActivity {
 //
 //        if(user != null){
 //            String username = user.getUsername();
-//            boolean isAdmin = user.isAdmin();
+
 //        }else{
 //            // type something like user doesn't exist
 //        }
@@ -90,8 +89,8 @@ public class LoginPage extends AppCompatActivity {
                 }
             });
 
-
     }
+
 
     private void toastMaker(String s) {
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show();

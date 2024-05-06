@@ -73,4 +73,7 @@
     <string name="treeckospriteinvisible">treeckospriteinvisible</string>
     <string name="torchicspriteinvisible">torchicspriteinvisible</string>
     <string name="mudkipspriteinvisible">mudkipspriteinvisible</string>
+    <string name="auto_win">auto win!</string>
+    <string name="welcome_message">Welcome </string>
+    <string name="welcome_username">Welcome, Username!</string>
 </resources>

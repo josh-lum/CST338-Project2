@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -10,9 +11,135 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/congratulations_you_defeated_all_the_opponents_pokemon"
-        android:visibility="invisible"
+        android:visibility="visible"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="24dp"
         tools:layout_editor_absoluteY="171dp" />
+
+    <ImageView
+        android:id="@+id/venasaurImageViewAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/venasaurSprite"
+        android:src="@drawable/venusaur"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.598"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/blastoiseImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/blastoiseSprite"
+        android:src="@drawable/blastoise"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.598"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/charizardImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/charizardSprite"
+        android:src="@drawable/charizard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.598"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/meganiumImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/meganiumSprite"
+        android:src="@drawable/meganium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.79"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/typhlosionImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/typhlosionSprite"
+        android:src="@drawable/typhlosion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.79"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/feraligatrImageView"
+        android:layout_width="89dp"
+        android:layout_height="98dp"
+        android:contentDescription="@string/feraligatrSprite"
+        android:src="@drawable/feraligatr"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.795"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/sceptileImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/sceptileSprite"
+        android:src="@drawable/sceptile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.974"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/blazikenImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/blazikenSprite"
+        android:src="@drawable/blaziken"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.974"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/swampertImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/swampertSprite"
+        android:src="@drawable/swampert"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.974"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

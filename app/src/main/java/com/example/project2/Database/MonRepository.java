@@ -20,7 +20,7 @@ public class MonRepository {
     private UserDAO userDao;
     private PartyDAO partyDAO;
     private ArrayList<Mon> allMon;
-    private static MonRepository repository;
+    public static MonRepository repository;
 
     public MonRepository(Application application){
         MonDatabase db = MonDatabase.getDatabase(application);

@@ -1,7 +1,12 @@
 package com.example.project2;
 
-import androidx.appcompat.app.AppCompatActivity;
+import static com.example.project2.Database.MonRepository.repository;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+
+import com.example.project2.Database.MonRepository;
 import com.example.project2.Database.entities.Mon;
 import com.example.project2.Database.entities.User;
 import com.example.project2.databinding.BattleScreenBinding;
@@ -9,6 +14,7 @@ import com.example.project2.databinding.BattleScreenBinding;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -19,27 +25,67 @@ import android.widget.Toast;
 
 public class BattleLooper extends AppCompatActivity {
 
-    private static final int DAMAGE_TICK = 2;
-    private static final int DAMAGE_INTERVAL = 1000;
-    private int damageInterval = DAMAGE_INTERVAL;
+    private Opponent opponent;
+    public static final int DAMAGE_TICK = 2;
     private Handler handler;
     private Mon mon;
-    private Opponent opponent;
+    //public Opponent opponent;
     private User user;
     private int userId;
     private BattleScreenBinding binding;
-
+    private MediaPlayer mediaPlayer;
+    private Button adminButton;
+    private MonRepository repository;
 
 
     @Override
-    protected void onCreate(Bundle savedInstance){
+    protected void onCreate(Bundle savedInstance) {
+        repository = MonRepository.getRepository(getApplication());
+        opponent = new Opponent();
         int num = 0;
         updateSprite(num);
         super.onCreate(savedInstance);
-        opponent = new Opponent();
         binding = com.example.project2.databinding.BattleScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         handler = new Handler(Looper.getMainLooper());
+
+        // set up background music during battle
+        mediaPlayer = MediaPlayer.create(this, R.raw.floaroma);
+        mediaPlayer.setVolume(1.0f, 1.0f);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.start();
+
+
+        int userId = getIntent().getIntExtra(MainActivity.SHARED_PREFERENCE_USERID_KEY, -1);
+        adminButton = findViewById(R.id.autowinadmin);
+        LiveData<User> userObserver = repository.getUserByUserId(userId);
+        userObserver.observe(this, new Observer<User>() {
+            @Override
+            public void onChanged(User observedUser) {
+                if (observedUser != null) {
+                    user = observedUser;
+                    if (user.isAdmin()) {
+                        adminButton.setVisibility(View.VISIBLE);
+                    } else {
+                        adminButton.setVisibility(View.GONE);
+                    }
+                    TextView usernameTextView = findViewById(R.id.usernameTextView);
+                    String welcomeMessage = getString(R.string.welcome_message);
+                    String username = user.getUsername();
+                    String welcomeText = welcomeMessage + " " + username;
+                    usernameTextView.setText(welcomeText);
+                }
+            }
+        });
+
+
+
+        adminButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setContentView(R.layout.victory_screen);
+            }
+        });
 
         // go back to menu screen
           //Button backButton = findViewById(R.id.backButton);
@@ -53,52 +99,38 @@ public class BattleLooper extends AppCompatActivity {
         // deal damage button (its invisible)
         Button inflictDamageButton = findViewById(R.id.inflictDamageButton);
         inflictDamageButton.setOnClickListener(new View.OnClickListener() {
+
+            // the button press works not sure if the inflictDamage function works tho
             @Override
             public void onClick(View v) {
-                Toast.makeText(BattleLooper.this, "Button clicked", Toast.LENGTH_SHORT).show();
                 inflictDamage();
             }
         });
-        startGameLoop();
+        updateSprites(0);
     }
 
-    private void startGameLoop(){
-        handler.postDelayed(new Runnable() {
-            @SuppressLint("SetTextI18n")
-            int num = -1;
-            @Override
-            public void run() {
-                binding.userCircle.setImageResource(R.drawable.blastoise);
-                int resId = updateSprite(num += 1);
-                binding.oppCircle.setImageResource(resId);
-               if(opponent.hasMorePokemon()){
-                   Pokemon currentMon = opponent.getNextPokemon();
-                   if(currentMon.getHp() <= 0){
-                       opponent.switchToNextPokemon();
-                       updateSprite(num += 1);
-                   }
-                   updateOpponentPokemonHealth();
-                   damageInterval = calculateNewDamageInterval(DAMAGE_INTERVAL, currentMon.getDmg());
-                   handler.postDelayed(this, damageInterval);
-               }else{
-                   TextView victoryTextView = findViewById(R.id.victoryScreenTextView);
-                   victoryTextView.setText("Congratulations you defeated all the opponents pokemon!");
-                   victoryTextView.setVisibility(View.VISIBLE);
-               }
-            }
-        }, damageInterval);
-    }
     private void updateOpponentPokemonHealth(){
         opponent.getNextPokemon().getHp();
     }
 
-    private void inflictDamage(){
+    void inflictDamage(){
         if(opponent.hasMorePokemon()){
             Pokemon currentMon = opponent.getNextPokemon();
-            damageInterval = calculateNewDamageInterval(damageInterval, DAMAGE_TICK);
-            currentMon.setDmg(DAMAGE_TICK);
+            currentMon.setHp(currentMon.getHp() - DAMAGE_TICK);
+            if(currentMon.getHp() <= 0){
+                opponent.switchToNextPokemon();
+                updateSprites(opponent.getCurrentMonIndex());
+            }
             updateOpponentPokemonHealth();
         }
+    }
+
+    private void updateSprites(int num) {
+        int resId = updateSprite(num);
+        // replace with what user has
+        //TODO: squib
+        binding.userCircle.setImageResource();
+        binding.oppCircle.setImageResource(resId);
     }
 
     public void onBackPress(){
@@ -106,14 +138,34 @@ public class BattleLooper extends AppCompatActivity {
         finish();
     }
 
-    private int calculateNewDamageInterval(int currentInterval, int damageInflicted){
-        return currentInterval + damageInflicted;
-    }
-
     static Intent BattleLooperIntentFactory(Context context, int userId){
         Intent intent = new Intent(context, BattleLooper.class);
         intent.putExtra(MainActivity.SHARED_PREFERENCE_USERID_KEY, userId);
         return intent;
+    }
+
+    public int userMon(String name){
+        if(name.equals("BULBASAUR")){
+            return R.drawable.bulbasaur;
+        }else if(name.equals("CHARMANDER")){
+            return R.drawable.charmander;
+        }else if(name.equals("SQUIRTLE")){
+            return R.drawable.squirtle;
+        }else if(name.equals("CHIKORITA")){
+            return R.drawable.chikorita;
+        }else if(name.equals("CYNDAQUIL")){
+            return R.drawable.cyndaquil;
+        }else if(name.equals("TOTODILE")){
+            return R.drawable.totodile;
+        }else if(name.equals("TREECKO")){
+            return R.drawable.treecko;
+        }else if(name.equals("TORCHIC")){
+            return R.drawable.torchic;
+        }else if(name.equals("MUDKIP")){
+            return R.drawable.mudkip;
+        }else{
+            return R.drawable.fennekin;
+        }
     }
 
     public int updateSprite(int num){
@@ -140,5 +192,4 @@ public class BattleLooper extends AppCompatActivity {
             return R.drawable.cynthia;
         }
     }
-
 }
