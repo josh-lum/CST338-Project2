@@ -78,6 +78,8 @@ public class BattleLooper extends AppCompatActivity {
             }
         });
 
+
+
         adminButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,7 +128,8 @@ public class BattleLooper extends AppCompatActivity {
     private void updateSprites(int num) {
         int resId = updateSprite(num);
         // replace with what user has
-        binding.userCircle.setImageResource(R.drawable.blastoise);
+        //TODO: squib
+        binding.userCircle.setImageResource();
         binding.oppCircle.setImageResource(resId);
     }
 
@@ -139,6 +142,30 @@ public class BattleLooper extends AppCompatActivity {
         Intent intent = new Intent(context, BattleLooper.class);
         intent.putExtra(MainActivity.SHARED_PREFERENCE_USERID_KEY, userId);
         return intent;
+    }
+
+    public int userMon(String name){
+        if(name.equals("BULBASAUR")){
+            return R.drawable.bulbasaur;
+        }else if(name.equals("CHARMANDER")){
+            return R.drawable.charmander;
+        }else if(name.equals("SQUIRTLE")){
+            return R.drawable.squirtle;
+        }else if(name.equals("CHIKORITA")){
+            return R.drawable.chikorita;
+        }else if(name.equals("CYNDAQUIL")){
+            return R.drawable.cyndaquil;
+        }else if(name.equals("TOTODILE")){
+            return R.drawable.totodile;
+        }else if(name.equals("TREECKO")){
+            return R.drawable.treecko;
+        }else if(name.equals("TORCHIC")){
+            return R.drawable.torchic;
+        }else if(name.equals("MUDKIP")){
+            return R.drawable.mudkip;
+        }else{
+            return R.drawable.fennekin;
+        }
     }
 
     public int updateSprite(int num){
