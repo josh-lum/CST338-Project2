@@ -9,6 +9,7 @@ import com.example.project2.databinding.BattleScreenBinding;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -28,6 +29,7 @@ public class BattleLooper extends AppCompatActivity {
     private User user;
     private int userId;
     private BattleScreenBinding binding;
+    private MediaPlayer mediaPlayer;
 
 
 
@@ -40,6 +42,13 @@ public class BattleLooper extends AppCompatActivity {
         binding = com.example.project2.databinding.BattleScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         handler = new Handler(Looper.getMainLooper());
+
+        // set up background music during battle
+        mediaPlayer = MediaPlayer.create(this, R.raw.floaroma);
+        mediaPlayer.setVolume(1.0f, 1.0f);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.start();
+
 
         // go back to menu screen
           //Button backButton = findViewById(R.id.backButton);
