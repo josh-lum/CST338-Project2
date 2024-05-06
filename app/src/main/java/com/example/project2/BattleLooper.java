@@ -53,41 +53,16 @@ public class BattleLooper extends AppCompatActivity {
         // deal damage button (its invisible)
         Button inflictDamageButton = findViewById(R.id.inflictDamageButton);
         inflictDamageButton.setOnClickListener(new View.OnClickListener() {
+
+            // the button press works not sure if the inflictDamage function works tho
             @Override
             public void onClick(View v) {
-                Toast.makeText(BattleLooper.this, "Button clicked", Toast.LENGTH_SHORT).show();
                 inflictDamage();
             }
         });
-        startGameLoop();
+        updateSprites(0);
     }
 
-    private void startGameLoop(){
-        handler.postDelayed(new Runnable() {
-            @SuppressLint("SetTextI18n")
-            int num = -1;
-            @Override
-            public void run() {
-                binding.userCircle.setImageResource(R.drawable.blastoise);
-                int resId = updateSprite(num += 1);
-                binding.oppCircle.setImageResource(resId);
-               if(opponent.hasMorePokemon()){
-                   Pokemon currentMon = opponent.getNextPokemon();
-                   if(currentMon.getHp() <= 0){
-                       opponent.switchToNextPokemon();
-                       updateSprite(num += 1);
-                   }
-                   updateOpponentPokemonHealth();
-                   damageInterval = calculateNewDamageInterval(DAMAGE_INTERVAL, currentMon.getDmg());
-                   handler.postDelayed(this, damageInterval);
-               }else{
-                   TextView victoryTextView = findViewById(R.id.victoryScreenTextView);
-                   victoryTextView.setText("Congratulations you defeated all the opponents pokemon!");
-                   victoryTextView.setVisibility(View.VISIBLE);
-               }
-            }
-        }, damageInterval);
-    }
     private void updateOpponentPokemonHealth(){
         opponent.getNextPokemon().getHp();
     }
@@ -95,19 +70,25 @@ public class BattleLooper extends AppCompatActivity {
     private void inflictDamage(){
         if(opponent.hasMorePokemon()){
             Pokemon currentMon = opponent.getNextPokemon();
-            damageInterval = calculateNewDamageInterval(damageInterval, DAMAGE_TICK);
-            currentMon.setDmg(DAMAGE_TICK);
+            currentMon.setHp(currentMon.getHp() - DAMAGE_TICK);
+            if(currentMon.getHp() <= 0){
+                opponent.switchToNextPokemon();
+                updateSprites(opponent.getCurrentMonIndex());
+            }
             updateOpponentPokemonHealth();
         }
+    }
+
+    private void updateSprites(int num) {
+        int resId = updateSprite(num);
+        // replace with what user has
+        binding.userCircle.setImageResource(R.drawable.blastoise);
+        binding.oppCircle.setImageResource(resId);
     }
 
     public void onBackPress(){
         startActivity(MainActivity.MainActivityIntentFactory(getApplicationContext(),user.getId()));
         finish();
-    }
-
-    private int calculateNewDamageInterval(int currentInterval, int damageInflicted){
-        return currentInterval + damageInflicted;
     }
 
     static Intent BattleLooperIntentFactory(Context context, int userId){
