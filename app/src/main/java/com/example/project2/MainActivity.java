@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.project2.Database.MonRepository;
 import com.example.project2.Database.entities.User;
@@ -54,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         }else {
             user = repository.getUserByUserId(loggedInUserId);
             user.observe(this, newUser -> {
-
             });
         }
         user = repository.getUserByUserId(loggedInUserId);

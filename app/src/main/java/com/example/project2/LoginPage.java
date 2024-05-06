@@ -41,7 +41,6 @@ public class LoginPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(CreateAccount.CreateAccountIntentFactory(getApplicationContext()));
-
             }
         });
 

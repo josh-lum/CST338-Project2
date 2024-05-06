@@ -69,9 +69,15 @@ public class BattleLooper extends AppCompatActivity {
                     } else {
                         adminButton.setVisibility(View.GONE);
                     }
+                    TextView usernameTextView = findViewById(R.id.usernameTextView);
+                    String welcomeMessage = getString(R.string.welcome_message);
+                    String username = user.getUsername();
+                    String welcomeText = welcomeMessage + " " + username;
+                    usernameTextView.setText(welcomeText);
                 }
             }
         });
+
         adminButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
