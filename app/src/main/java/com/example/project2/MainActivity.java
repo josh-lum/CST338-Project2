@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         binding.BattleMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(BattleLooper.BattleLooperIntentFactory(getApplicationContext(), loggedInUserId));
+                startActivity(BattleLooper.BattleLooperIntentFactory(getApplicationContext(),loggedInUserId));
             }
         });
 
